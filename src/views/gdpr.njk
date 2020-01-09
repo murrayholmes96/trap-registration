@@ -1,0 +1,22 @@
+{% extends "_base.njk" %}
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% block content %}
+    <h1 class="govuk-heading-xl">Your information</h1>
+
+    <p class="govuk-body">
+        Your details will be held by SNH for the purposes of trap registration
+        for use of traps under SNH’s General Licences. We will share this
+        information with Police Scotland for the purposes of crime prevention
+        and detection. Your data will be held for a period of five years for
+        this purpose. Please see our privacy notice for further information.
+    </p>
+
+    <form method="post">
+        <input type="hidden" name="acceptGdpr" value="yes">
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+    </form>
+{% endblock %}
