@@ -8,7 +8,8 @@
   "type": "module",
   "scripts": {
     "scss": "node-sass -o dist src/main.scss",
-    "build": "npm run scss",
+    "lint": "xo",
+    "build": "npm run lint && npm run scss",
     "prestart": "npm run build",
     "start": "node --experimental-modules src/server.js",
     "dev": "nodemon --exec \"npm run start\""
@@ -27,6 +28,23 @@
     "winston": "^3.2.1"
   },
   "devDependencies": {
-    "nodemon": "^2.0.2"
+    "babel-eslint": "^10.0.3",
+    "nodemon": "^2.0.2",
+    "prettier": "^1.19.1",
+    "xo": "^0.25.3"
+  },
+  "xo": {
+    "space": 2,
+    "prettier": true,
+    "parser": "babel-eslint",
+    "rules": {
+      "import/extensions": 0,
+      "new-cap": 0
+    }
+  },
+  "prettier": {
+    "printWidth": 120,
+    "singleQuote": true,
+    "arrowParens": "always"
   }
 }
