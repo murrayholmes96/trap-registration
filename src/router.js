@@ -4,10 +4,6 @@ const router = express.Router();
 // Import all the controllers.
 import gdpr from './controllers/gdpr.js';
 
-router.get('/', (req, res) => {
-    req.session.destroy();
-    res.render('start.njk');
-});
 router.get('/start', (req, res) => {
     req.session.destroy();
     res.render('start.njk');

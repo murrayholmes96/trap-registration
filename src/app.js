@@ -39,7 +39,14 @@ app.use(
 app.use('/dist', express.static(path.join(__dirname, '..', '/dist')));
 app.use('/govuk-frontend', express.static(path.join(__dirname, '..', '/node_modules/govuk-frontend/govuk')));
 
+app.all('/', (req, res) => {
+  res.redirect('start');
+});
+
 
 app.use('/', router);
+app.use((req, res) => {
+  res.status(404).render('error-404.njk');
+});
 
 export {app as default};
