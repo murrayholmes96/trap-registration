@@ -2,14 +2,27 @@ import express from 'express';
 const router = express.Router();
 
 // Import all the controllers.
-import gdpr from './controllers/gdpr.js';
+import {Page} from './controllers/_base.js';
+import StartController from './controllers/start.js';
+import GdprController from './controllers/gdpr.js';
 
-router.get('/start', (req, res) => {
-    req.session.destroy();
-    res.render('start.njk');
-});
+// Configure all of the pages and routes.
 
-// Mount all the controllers and 'no' routes.
-router.use('/gdpr', gdpr);
+router.use(
+  Page({
+    path: 'start',
+    positiveForward: 'gdpr',
+    controller: StartController
+  })
+);
 
-export { router as default };
+router.use(
+  Page({
+    path: 'gdpr',
+    back: 'start',
+    positiveForward: 'using-traps',
+    controller: GdprController
+  })
+);
+
+export {router as default};

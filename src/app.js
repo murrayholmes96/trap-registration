@@ -43,8 +43,8 @@ app.all('/', (req, res) => {
   res.redirect('start');
 });
 
+app.use(router);
 
-app.use('/', router);
 app.use((req, res) => {
   res.status(404).render('error-404.njk');
 });
