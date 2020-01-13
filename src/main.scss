@@ -3,4 +3,7 @@ body {
 }
 
 $govuk-assets-path: '/govuk-frontend/assets/';
-@import "node_modules/govuk-frontend/govuk/all.scss";
+@import "~govuk-frontend/govuk/all";
+
+$naturescot-logo: '/dist/naturescot-logo.png';
+@import "~naturescot-frontend/naturescot/all";

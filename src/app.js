@@ -19,7 +19,7 @@ app.use(express.json());
 
 app.use(morgan('combined', {stream: logger.stream}));
 
-nunjucks.configure(['src/views', 'node_modules/govuk-frontend'], {
+nunjucks.configure(['src/views', 'node_modules/naturescot-frontend', 'node_modules/govuk-frontend'], {
   autoescape: true,
   express: app
 });

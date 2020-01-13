@@ -1,9 +1,9 @@
 {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
 {% from "govuk/components/skip-link/macro.njk" import govukSkipLink %}
-{% from "govuk/components/header/macro.njk" import govukHeader %}
+{% from "naturescot/components/header/macro.njk" import naturescotHeader %}
 
 {% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
-{% from "govuk/components/footer/macro.njk" import govukFooter %}
+{% from "naturescot/components/footer/macro.njk" import naturescotFooter %}
 
 {% set assetPath = "/govuk-frontend/assets" %}
 
@@ -23,7 +23,7 @@
 {% endblock %}
 
 {% block header %}
-  {{ govukHeader({
+  {{ naturescotHeader({
     homepageUrl: "#",
     containerClasses: "govuk-width-container",
     serviceName: "Trap Registration",
@@ -58,8 +58,7 @@
 </div>
 
 {% block footer %}
-  {# {{ govukFooter({ #}
-  {{ govukFooter({
+  {{ naturescotFooter({
     meta: {
       items: [
         {
