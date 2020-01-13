@@ -33,10 +33,9 @@ app.use(session({
   resave: true,
   saveUninitialized: false
 }));
+app.use('/dist', express.static(path.join(__dirname, '..', '/dist')));
+app.use('/govuk-frontend', express.static(path.join(__dirname, '..', '/node_modules/govuk-frontend/govuk')));
 
-app.use('/dist', express.static(path.join(__dirname, '..', '/dist')))
-app.use('/govuk-frontend', express.static(path.join(__dirname, '..', '/node_modules/govuk-frontend/govuk')))
-app.use('/assets', express.static(path.join(__dirname, '..', '/node_modules/govuk-frontend/govuk/assets')))
 
 app.use('/', router);
 

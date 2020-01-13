@@ -7,17 +7,7 @@
 {% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
 {% from "govuk/components/footer/macro.njk" import govukFooter %}
 
-{% set htmlClasses = "app-html-class" %}
-{% set htmlLang = "en" %}
-{% set assetPath = "" %}
-{% set assetUrl = "<YOUR-DOMAIN>" %}
-{% set themeColor = "blue" %}
-{% set bodyClasses = "app-body-class" %}
-{% set bodyAttributes = {
-  'data-test': 'My value',
-  'data-other': 'report:details'
-} %}
-{% set containerClasses = "app-width-container--wide" %}
+{% set assetPath = "/govuk-frontend/assets" %}
 
 {% block head %}
     <link rel="stylesheet" href="/dist/main.css">
