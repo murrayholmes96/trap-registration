@@ -1,0 +1,182 @@
+{% extends "_base.njk" %}
+
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% block content %}
+  <form method="post">
+    <h1 class="govuk-heading-xl">Check your answers before sending your application</h1>
+    <h2 class="govuk-heading-m">Application details</h2>
+{{ govukSummaryList({
+  rows: [
+    {
+      key: {
+        text: "Use of Traps"
+      },
+      value: {
+        text: "I am using or planning to use a trap under a General Licence." if model.usingTraps === 'yes'
+      },
+      actions: {
+        items: [
+          {
+            href: "/using-traps#using-traps",
+            text: "Change",
+            visuallyHiddenText: "use of traps"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Abide to Terms"
+      },
+      value: {
+        text: "I confirm to abide to the terms of the General Licences." if model.abide
+      },
+      actions: {
+        items: [
+          {
+            href: "/abide#abide",
+            text: "Change",
+            visuallyHiddenText: "confirmation to abide to terms"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Criminal Convictions"
+      },
+      value: {
+        text: "I confirm I do not have any unspent wildlife criminal convictions." if model.conviction === 'yes'
+      },
+      actions: {
+        items: [
+          {
+            href: "/conviction#conviction",
+            text: "Change",
+            visuallyHiddenText: "convictions"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "General Licence 1"
+      },
+      value: {
+        text: 'I intend to trap under "GL01 - To kill or take certain birds for the conservation of wild birds".' if model.general1 else 'I do not intend to trap under "GL01 - To kill or take certain birds for the conservation of wild birds".'
+      },
+      actions: {
+        items: [
+          {
+            href: "/general#general",
+            text: "Change",
+            visuallyHiddenText: "general licences"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "General Licence 2"
+      },
+      value: {
+        text: 'I intend to trap under "GL02 - To kill or take certain birds for the prevention of serious damage".' if model.general2 else 'I do not intend to trap under "GL02 - To kill or take certain birds for the prevention of serious damage".'
+      },
+      actions: {
+        items: [
+          {
+            href: "/general#general",
+            text: "Change",
+            visuallyHiddenText: "general licences"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "General Licence 3"
+      },
+      value: {
+        text: 'I intend to trap under "GL03 - To kill or take certain birds for the preservation of public health, public safety and preventing the spread of disease".' if model.general3 else 'I do not intend to trap under "GL03 - To kill or take certain birds for the preservation of public health, public safety and preventing the spread of disease".'
+      },
+      actions: {
+        items: [
+          {
+            href: "/general#general",
+            text: "Change",
+            visuallyHiddenText: "general licences"
+          }
+        ]
+      }
+    }
+  ]
+})}}
+
+      <h2 class="govuk-heading-m">Personal details</h2>
+{{ govukSummaryList({
+  rows: [
+    {
+      key: {
+        text: "Name"
+      },
+      value: {
+        text: model.fullName
+      },
+      actions: {
+        items: [
+          {
+            href: "/details#full-name",
+            text: "Change",
+            visuallyHiddenText: "name"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Contact information"
+      },
+      value: {
+        html: model.displayAddress
+      },
+      actions: {
+        items: [
+          {
+            href: "/details#address-line-1",
+            text: "Change",
+            visuallyHiddenText: "contact information"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Contact details"
+      },
+      value: {
+        html: model.displayContact
+      },
+      actions: {
+        items: [
+          {
+            href: "/details#phone-number",
+            text: "Change",
+            visuallyHiddenText: "contact details"
+          }
+        ]
+      }
+    }
+  ]
+}) }}
+
+    <h2 class="govuk-heading-m">Now send your application</h2>
+
+    <p class="govuk-body">By submitting this notification you are confirming that, to the best of your knowledge, the details you are providing are correct.</p>
+
+    {{ govukButton({
+      text: "Accept and send"
+    }) }}
+
+  </form>
+{% endblock %}

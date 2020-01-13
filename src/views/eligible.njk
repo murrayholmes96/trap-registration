@@ -1,0 +1,26 @@
+{% extends "_base.njk" %}
+
+{% from "govuk/components/warning-text/macro.njk" import govukWarningText %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% block content %}
+    <h1 class="govuk-heading-xl">Eligible to register to use traps</h1>
+
+    <p class="govuk-body">
+        Based on your answers, you are eligible to register to use Larsen traps,
+        Larsen mate traps, Larsen pod traps and/or multi-catch cage traps under
+        SNH General Licences
+        <a class="govuk-link" href="https://gateway.snh.gov.uk/go/?id=18">GL01</a>,
+        <a class="govuk-link" href="https://gateway.snh.gov.uk/go/?id=19">GL02</a> &amp;
+        <a class="govuk-link" href="https://gateway.snh.gov.uk/go/?id=20">GL03</a>.
+    </p>
+    {{ govukWarningText({
+      text: "If you no longer require this registration or you are convicted of a wildlife crime under the Wildlife and Countryside Act (1981) you must inform us.",
+      iconFallbackText: "Warning"
+    }) }}
+
+    <form method="post">
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+    </form>
+{% endblock %}

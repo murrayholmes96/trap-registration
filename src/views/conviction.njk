@@ -1,0 +1,54 @@
+{% extends "_base.njk" %}
+
+{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% block content %}
+
+  {% if model.convictionError %}
+    {{ govukErrorSummary({
+      titleText: "There is a problem",
+      errorList: [
+        {
+          text: "You must confirm you either do or do not have any unspent criminal convictions.",
+          href: "#conviction-error"
+        }
+      ]
+    }) }}
+  {% endif %}
+
+<form method="post">
+    {{ govukRadios({
+        classes: "govuk-radios--inline",
+        idPrefix: "conviction",
+        name: "conviction",
+        fieldset: {
+            legend: {
+                text: "Can you confirm you do not have any unspent criminal convictions under the Wildlife and Countryside Act (1981)?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--xl"
+            }
+        },
+        errorMessage: {
+            text: "You must confirm you either do or do not have any unspent criminal convictions."
+        } if model.convictionError,
+        items: [
+            {
+                value: "yes",
+                text: "Yes",
+                checked: model.conviction === 'yes'
+            },
+            {
+                value: "no",
+                text: "No",
+                checked: model.conviction === 'no'
+            }
+        ]
+    }) }}
+
+    {{ govukButton({
+        text: "Continue"
+    }) }}
+</form>
+
+{% endblock %}

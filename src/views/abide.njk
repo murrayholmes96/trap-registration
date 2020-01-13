@@ -1,0 +1,61 @@
+{% extends "_base.njk" %}
+
+
+{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% block content %}
+
+  {% if model.abideError %}
+    {{ govukErrorSummary({
+      titleText: "There is a problem",
+      errorList: [
+        {
+          text: "You must confirm you understand the terms of the General Licences and agree to abide by them or not.",
+          href: "#abide-error"
+        }
+      ]
+    }) }}
+  {% endif %}
+
+  <form method="post">
+    {{ govukRadios({
+      classes: "govuk-radios--inline",
+      idPrefix: "abide",
+      name: "abide",
+      fieldset: {
+        legend: {
+          text: "Can you confirm you understand the terms of the General Licences and agree to abide by them?",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--xl"
+        }
+      },
+      hint: {
+        html:
+          'General Licence <a class="govuk-link" href="https://gateway.snh.gov.uk/go/?id=18">GL01</a>, ' +
+          '<a class="govuk-link" href="https://gateway.snh.gov.uk/go/?id=19">GL02</a> & ' +
+          '<a class="govuk-link" href="https://gateway.snh.gov.uk/go/?id=20">GL03</a> can be found here.'
+      },
+      errorMessage: {
+        text: "You must confirm you understand the terms of the General Licences and agree to abide by them or not."
+      } if model.abideError,
+      items: [
+        {
+          value: "yes",
+          text: "Yes",
+          checked: model.abide === 'yes'
+        },
+        {
+          value: "no",
+          text: "No",
+          checked: model.abide === 'no'
+        }
+      ]
+    }) }}
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+  </form>
+
+{% endblock %}

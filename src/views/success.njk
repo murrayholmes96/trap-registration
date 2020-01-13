@@ -1,0 +1,31 @@
+{% extends "_base.njk" %}
+
+{% from "govuk/components/panel/macro.njk" import govukPanel %}
+{% block content %}
+      {{ govukPanel({
+        titleText: "Application complete",
+        html: "Your registration number<br><strong>"+model.regNo+"</strong>"
+      }) }}
+
+      <p class="govuk-body">We have sent you a confirmation email.</p>
+      <p class="govuk-body">
+        This email will contain your full registration details and provide you
+        with a copy of the current General Licences for your information.
+      </p>
+
+      <h2 class="govuk-heading-m">What happens next</h2>
+
+      <p class="govuk-body">
+        You must understand and comply with the conditions attached to the General Licences.
+      </p>
+      <p class="govuk-body">
+        We will contact you 3 months before your registration expires to remind you to register again.
+      </p>
+      <p class="govuk-body">
+        If you no longer require this registration or you are convicted of a wildlife crime under the Wildlife and Countryside Act (1981) you must inform us.
+      </p>
+
+      <p class="govuk-body">
+        <a href="#" class="govuk-link">What did you think of this service?</a> (takes 30 seconds)
+      </p>
+{% endblock %}

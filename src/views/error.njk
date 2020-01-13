@@ -1,0 +1,30 @@
+{% extends "_base.njk" %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">Sorry, there is a problem with the service</h1>
+      <p class="govuk-body">Try again later.</p>
+      <p class="govuk-body">
+        Contact the NatureScot Helpline if you need to speak to someone about registering to use traps under General Licences.
+      </p>
+      <p class="govuk-body">
+        Telephone:<br>
+        <strong class="govuk-!-font-weight-bold">01463 725 000</strong>
+      </p>
+      <p class="govuk-body">
+        Email:<br>
+        <strong class="govuk-!-font-weight-bold">traps@nature.scot</strong>
+      </p>
+      <p class="govuk-body">
+        Opening times:<br>
+        <strong class="govuk-!-font-weight-bold">Monday to Friday: 10am to 4pm</strong>
+      </p>
+      <p class="govuk-body">
+        Closed St. Andrews Day, Christmas Day, Boxing Day, New Year’s Day and January 2nd.
+      </p>
+    </div>
+  </div>
+{% endblock %}

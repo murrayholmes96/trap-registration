@@ -1,0 +1,66 @@
+{% extends "_base.njk" %}
+
+{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
+{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% block content %}
+  {% if model.generalError %}
+    {{ govukErrorSummary({
+      titleText: "There is a problem",
+      errorList: [
+        {
+          text: "You must confirm which General Licence or Licences you are using or planning to use a trap under.",
+          href: "#general-error"
+        }
+      ]
+    }) }}
+  {% endif %}
+
+  <form method="post">
+
+    {{ govukCheckboxes({
+      idPrefix: "general",
+      name: "general",
+      fieldset: {
+        legend: {
+          text: "Which General Licences do you trap or intend to trap under?",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--xl"
+        }
+      },
+      hint: {
+        html: "Select all that apply. " +
+              'General Licence <a class="govuk-link" href="https://gateway.snh.gov.uk/go/?id=18">GL01</a>, ' +
+              '<a class="govuk-link" href="https://gateway.snh.gov.uk/go/?id=19">GL02</a> & ' +
+              '<a class="govuk-link" href="https://gateway.snh.gov.uk/go/?id=20">GL03</a> can be found here.'
+
+      },
+      errorMessage : {
+        text: "You must confirm which General Licence or Licences you are using or planning to use a trap under."
+      } if model.generalError,
+      items: [
+        {
+          value: "general1",
+          text: "GL01 - To kill or take certain birds for the conservation of wild birds",
+          checked: model.general1
+        },
+        {
+          value: "general2",
+          text: "GL02 - To kill or take certain birds for the prevention of serious damage",
+          checked: model.general2
+        },
+        {
+          value: "general3",
+          text: "GL03 - To kill or take certain birds for the preservation of public health, public safety and preventing the spread of disease",
+          checked: model.general3
+        }
+      ]
+    }) }}
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+
+  </form>
+
+{% endblock %}
