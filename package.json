@@ -9,10 +9,9 @@
   "scripts": {
     "scss": "node-sass --importer node_modules/node-sass-package-importer/dist/cli.js -o dist src/main.scss",
     "lint": "xo",
-    "build": "npm run scss && cp node_modules/naturescot-frontend/naturescot/assets/images/naturescot-logo.png dist/",
-    "prestart": "npm run lint && npm run build",
+    "build": "npm run lint && npm run scss && cp node_modules/naturescot-frontend/naturescot/assets/images/naturescot-logo.png dist/",
     "start": "node --experimental-modules src/server.js",
-    "dev": "nodemon --exec \"npm run start\" -e js,njk,scss"
+    "dev": "nodemon --exec \"npm run build && npm run start\" -e js,njk,scss"
   },
   "engines": {
     "node": "12.14.1"
