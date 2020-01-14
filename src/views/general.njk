@@ -9,7 +9,7 @@
       titleText: "There is a problem",
       errorList: [
         {
-          text: "You must confirm which General Licence or Licences you are using or planning to use a trap under.",
+          text: "You must confirm which General Licence or Licences you intend to trap under.",
           href: "#general-error"
         }
       ]
@@ -23,7 +23,7 @@
       name: "general",
       fieldset: {
         legend: {
-          text: "Which General Licences do you trap or intend to trap under?",
+          text: "Which General Licences do you intend to trap under?",
           isPageHeading: true,
           classes: "govuk-fieldset__legend--xl"
         }
@@ -31,12 +31,13 @@
       hint: {
         html: "Select all that apply. " +
               'General Licence <a class="govuk-link" href="https://gateway.snh.gov.uk/go/?id=18">GL01</a>, ' +
-              '<a class="govuk-link" href="https://gateway.snh.gov.uk/go/?id=19">GL02</a> & ' +
-              '<a class="govuk-link" href="https://gateway.snh.gov.uk/go/?id=20">GL03</a> can be found here.'
+              '<a class="govuk-link" href="https://gateway.snh.gov.uk/go/?id=19">GL02</a>, ' +
+              '<a class="govuk-link" href="https://gateway.snh.gov.uk/go/?id=20">GL03</a> & ' +
+              '<a class="govuk-link" href="https://gateway.snh.gov.uk/go/?id=21">GL04</a> can be found here.'
 
       },
       errorMessage : {
-        text: "You must confirm which General Licence or Licences you are using or planning to use a trap under."
+        text: "You must confirm which General Licence or Licences you intend to trap under."
       } if model.generalError,
       items: [
         {
@@ -53,6 +54,11 @@
           value: "general3",
           text: "GL03 - To kill or take certain birds for the preservation of public health, public safety and preventing the spread of disease",
           checked: model.general3
+        },
+        {
+          value: "general4",
+          text: "GL04 - To kill or take certain birds to protect air safety",
+          checked: model.general4
         }
       ]
     }) }}
