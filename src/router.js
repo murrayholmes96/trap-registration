@@ -6,7 +6,7 @@ import {Page} from './controllers/_base.js';
 import StartController from './controllers/start.js';
 import GdprController from './controllers/gdpr.js';
 import UsingTrapsController from './controllers/using-traps.js';
-import AbideController from './controllers/abide.js';
+import ComplyController from './controllers/comply.js';
 import ConvictionController from './controllers/conviction.js';
 import EligibleController from './controllers/eligible.js';
 import GeneralController from './controllers/general.js';
@@ -36,7 +36,7 @@ router.use(
   Page({
     path: 'using-traps',
     back: 'gdpr',
-    positiveForward: 'abide',
+    positiveForward: 'comply',
     negativeForward: 'no-using-traps',
     controller: UsingTrapsController
   })
@@ -44,18 +44,18 @@ router.use(
 
 router.use(
   Page({
-    path: 'abide',
+    path: 'comply',
     back: 'using-traps',
     positiveForward: 'conviction',
-    negativeForward: 'no-abide',
-    controller: AbideController
+    negativeForward: 'no-comply',
+    controller: ComplyController
   })
 );
 
 router.use(
   Page({
     path: 'conviction',
-    back: 'abide',
+    back: 'comply',
     positiveForward: 'eligible',
     negativeForward: 'no-conviction',
     controller: ConvictionController
@@ -114,8 +114,8 @@ router.use(
 
 router.use(
   Page({
-    path: 'no-abide',
-    back: 'abide'
+    path: 'no-comply',
+    back: 'comply'
   })
 );
 
