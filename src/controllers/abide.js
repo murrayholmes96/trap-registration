@@ -1,7 +1,7 @@
 import {ReturnState} from './_base.js';
 
 const abideController = (req) => {
-  // Did the user tell us they'll abide to the terms.
+  // Did the user tell us they'll comply with the terms.
   if (req.body.abide === 'yes') {
     // Then we don't have any errors. This clears any previous errors.
     req.session.abideError = false;
@@ -11,7 +11,7 @@ const abideController = (req) => {
     return ReturnState.Positive;
   }
 
-  // Did the user tell us they won't abide to the terms.
+  // Did the user tell us they won't comply with the terms.
   if (req.body.abide === 'no') {
     // It's a silly answer, but not an error. This clears any previous errors.
     req.session.abideError = false;
