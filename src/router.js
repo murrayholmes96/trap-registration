@@ -5,7 +5,6 @@ const router = express.Router();
 import {Page} from './controllers/_base.js';
 import StartController from './controllers/start.js';
 import GdprController from './controllers/gdpr.js';
-import UsingTrapsController from './controllers/using-traps.js';
 import ComplyController from './controllers/comply.js';
 import ConvictionController from './controllers/conviction.js';
 import EligibleController from './controllers/eligible.js';
