@@ -27,24 +27,15 @@ router.use(
   Page({
     path: 'gdpr',
     back: 'start',
-    positiveForward: 'using-traps',
+    positiveForward: 'comply',
     controller: GdprController
   })
 );
 
 router.use(
   Page({
-    path: 'using-traps',
-    back: 'gdpr',
-    positiveForward: 'comply',
-    controller: UsingTrapsController
-  })
-);
-
-router.use(
-  Page({
     path: 'comply',
-    back: 'using-traps',
+    back: 'gdpr',
     positiveForward: 'conviction',
     negativeForward: 'no-comply',
     controller: ComplyController
