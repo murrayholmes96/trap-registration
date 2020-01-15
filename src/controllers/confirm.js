@@ -12,6 +12,8 @@ const confirmController = async (req) => {
     await notifyClient.sendEmail('7b7a0810-a15d-4c72-8fcf-c1e7494641b3', 'traps@nature.scot', {
       personalisation: {
         regNo: req.session.regNo,
+        convictions: req.session.conviction === 'yes' ? 'yes' : 'no',
+        noConvictions: req.session.conviction === 'yes' ? 'no' : 'yes',
         general1: req.session.general1 ? 'yes' : 'no',
         noGeneral1: req.session.general1 ? 'no' : 'yes',
         general2: req.session.general2 ? 'yes' : 'no',
@@ -21,9 +23,7 @@ const confirmController = async (req) => {
         general4: req.session.general4 ? 'yes' : 'no',
         noGeneral4: req.session.general4 ? 'no' : 'yes',
         comply: req.session.comply === 'yes' ? 'yes' : 'no',
-        noComply: req.session.comply === 'yes' ? 'no' : 'yes',
-        convictions: req.session.conviction === 'yes' ? 'yes' : 'no',
-        noConvictions: req.session.conviction === 'yes' ? 'no' : 'yes'
+        noComply: req.session.comply === 'yes' ? 'no' : 'yes'
       },
       reference: req.session.regNo,
       emailReplyToId: '4a9b34d1-ab1f-4806-83df-3e29afef4165'
@@ -33,12 +33,12 @@ const confirmController = async (req) => {
     await notifyClient.sendEmail('59b7f2f3-b152-405a-9441-c8633fc45399', 'traps@nature.scot', {
       personalisation: {
         regNo: req.session.regNo,
+        noConvictions: req.session.conviction === 'yes' ? 'yes' : 'no',
         general1: req.session.general1 ? 'yes' : 'no',
         general2: req.session.general2 ? 'yes' : 'no',
         general3: req.session.general3 ? 'yes' : 'no',
         general4: req.session.general4 ? 'yes' : 'no',
         comply: req.session.comply === 'yes' ? 'yes' : 'no',
-        noConvictions: req.session.conviction === 'yes' ? 'yes' : 'no',
         fullName: req.session.fullName,
         addressLine1: req.session.addressLine1,
         addressLine2: req.session.addressLine2,
