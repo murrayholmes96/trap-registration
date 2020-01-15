@@ -10,23 +10,6 @@
   rows: [
     {
       key: {
-        text: "Comply with Terms"
-      },
-      value: {
-        text: "I confirm to comply with the terms of the General Licences." if model.comply
-      },
-      actions: {
-        items: [
-          {
-            href: "/comply#comply",
-            text: "Change",
-            visuallyHiddenText: "confirmation to comply with terms"
-          }
-        ]
-      }
-    },
-    {
-      key: {
         text: "Criminal Convictions"
       },
       value: {
@@ -106,6 +89,23 @@
             href: "/general#general",
             text: "Change",
             visuallyHiddenText: "general licences"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Comply with Terms"
+      },
+      value: {
+        text: "I confirm to comply with the terms of the General Licences." if model.comply
+      },
+      actions: {
+        items: [
+          {
+            href: "/comply#comply",
+            text: "Change",
+            visuallyHiddenText: "confirmation to comply with terms"
           }
         ]
       }
