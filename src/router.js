@@ -37,7 +37,6 @@ router.use(
     path: 'using-traps',
     back: 'gdpr',
     positiveForward: 'comply',
-    negativeForward: 'no-using-traps',
     controller: UsingTrapsController
   })
 );
@@ -102,13 +101,6 @@ router.use(
   Page({
     path: 'success',
     back: 'details'
-  })
-);
-
-router.use(
-  Page({
-    path: 'no-using-traps',
-    back: 'using-traps'
   })
 );
 
