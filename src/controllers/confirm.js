@@ -12,8 +12,6 @@ const confirmController = async (req) => {
     await notifyClient.sendEmail('7b7a0810-a15d-4c72-8fcf-c1e7494641b3', 'traps@nature.scot', {
       personalisation: {
         regNo: req.session.regNo,
-        useTraps: req.session.usingTraps === 'yes' ? 'yes' : 'no',
-        noUseTraps: req.session.usingTraps === 'yes' ? 'no' : 'yes',
         general1: req.session.general1 ? 'yes' : 'no',
         noGeneral1: req.session.general1 ? 'no' : 'yes',
         general2: req.session.general2 ? 'yes' : 'no',
@@ -35,7 +33,6 @@ const confirmController = async (req) => {
     await notifyClient.sendEmail('59b7f2f3-b152-405a-9441-c8633fc45399', 'traps@nature.scot', {
       personalisation: {
         regNo: req.session.regNo,
-        useTraps: req.session.usingTraps === 'yes' ? 'yes' : 'no',
         general1: req.session.general1 ? 'yes' : 'no',
         general2: req.session.general2 ? 'yes' : 'no',
         general3: req.session.general3 ? 'yes' : 'no',
