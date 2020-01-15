@@ -26,25 +26,15 @@ router.use(
   Page({
     path: 'gdpr',
     back: 'start',
-    positiveForward: 'comply',
+    positiveForward: 'conviction',
     controller: GdprController
   })
 );
 
 router.use(
   Page({
-    path: 'comply',
-    back: 'gdpr',
-    positiveForward: 'conviction',
-    negativeForward: 'no-comply',
-    controller: ComplyController
-  })
-);
-
-router.use(
-  Page({
     path: 'conviction',
-    back: 'comply',
+    back: 'gdpr',
     positiveForward: 'eligible',
     negativeForward: 'no-conviction',
     controller: ConvictionController
@@ -64,15 +54,24 @@ router.use(
   Page({
     path: 'general',
     back: 'eligible',
-    positiveForward: 'details',
+    positiveForward: 'comply',
     controller: GeneralController
   })
 );
 
 router.use(
   Page({
-    path: 'details',
+    path: 'comply',
     back: 'general',
+    positiveForward: 'details',
+    controller: ComplyController
+  })
+);
+
+router.use(
+  Page({
+    path: 'details',
+    back: 'comply',
     positiveForward: 'confirm',
     controller: DetailsController
   })
