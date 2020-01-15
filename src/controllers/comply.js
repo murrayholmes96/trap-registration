@@ -11,16 +11,6 @@ const complyController = (req) => {
     return ReturnState.Positive;
   }
 
-  // Did the user tell us they won't comply with the terms.
-  if (req.body.comply === 'no') {
-    // It's a silly answer, but not an error. This clears any previous errors.
-    req.session.complyError = false;
-    // Save the decision.
-    req.session.comply = req.body.comply;
-    // Go down the 'STOP' path.
-    return ReturnState.Negative;
-  }
-
   // The user submitted the form without selecting an option, this is an error!
   req.session.complyError = true;
   // Unset any saved value.
