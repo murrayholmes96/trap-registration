@@ -2,7 +2,7 @@
 
 
 {% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
-{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
 {% block content %}
 
@@ -11,7 +11,7 @@
       titleText: "There is a problem",
       errorList: [
         {
-          text: "You must confirm you understand the terms of the General Licences and agree to comply with them or not.",
+          text: "You must confirm that you agree to comply with the terms of the General Licences.",
           href: "#comply-error"
         }
       ]
@@ -19,13 +19,12 @@
   {% endif %}
 
   <form method="post">
-    {{ govukRadios({
-      classes: "govuk-radios--inline",
+    {{ govukCheckboxes({
       idPrefix: "comply",
       name: "comply",
       fieldset: {
         legend: {
-          text: "Can you confirm you understand the terms of the General Licences and agree to comply with them?",
+          text: "Please confirm that you agree to comply with the terms of the General Licences",
           isPageHeading: true,
           classes: "govuk-fieldset__legend--xl"
         }
@@ -35,21 +34,20 @@
           'General Licence <a class="govuk-link" href="https://gateway.snh.gov.uk/go/?id=18">GL01</a>, ' +
           '<a class="govuk-link" href="https://gateway.snh.gov.uk/go/?id=19">GL02</a>, ' +
           '<a class="govuk-link" href="https://gateway.snh.gov.uk/go/?id=20">GL03</a> & '+
-          '<a class="govuk-link" href="https://gateway.snh.gov.uk/go/?id=21">GL04</a> can be found here.'
-      },
+          '<a class="govuk-link" href="https://gateway.snh.gov.uk/go/?id=21">GL04</a> can be found here. ' +
+          'Please note it is your responsibility to ensure that you do not use General Licences on areas where ' +
+          'General Licences are currently restricted. ' +
+          '<a class="govuk-link" href="https://www.nature.scot/general-licences-birds-restrictions">More information ' +
+          'can be found here</a>. This information will be updated regularly.'
+        },
       errorMessage: {
-        text: "You must confirm you understand the terms of the General Licences and agree to comply with them or not."
+        text: "You must confirm that you agree to comply with the terms of the General Licences."
       } if model.complyError,
       items: [
         {
           value: "yes",
-          text: "Yes",
+          text: "I agree to comply with the terms of the General Licences",
           checked: model.comply === 'yes'
-        },
-        {
-          value: "no",
-          text: "No",
-          checked: model.comply === 'no'
         }
       ]
     }) }}

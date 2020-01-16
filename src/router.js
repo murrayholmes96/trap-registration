@@ -95,13 +95,6 @@ router.use(
 
 router.use(
   Page({
-    path: 'no-comply',
-    back: 'comply'
-  })
-);
-
-router.use(
-  Page({
     path: 'no-conviction',
     back: 'conviction'
   })
