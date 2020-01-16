@@ -2,7 +2,18 @@
 
 {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
 {% from "govuk/components/warning-text/macro.njk" import govukWarningText %}
+{% from "govuk/components/accordion/macro.njk" import govukAccordion %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% block head %}
+{{ super() }}
+<style>
+#wildlifeCrime .govuk-accordion__controls {
+  display:none;
+}
+</style>
+{% endblock %}
+
 {% block content %}
   <form method="post">
     <h1 class="govuk-heading-xl">Check your answers before sending your registration</h1>
@@ -179,6 +190,25 @@
       text: "If you no longer require this registration or you are convicted of a wildlife crime you must inform us.",
       iconFallbackText: "Warning"
     }) }}
+
+    {{ govukAccordion({
+      id: "wildlifeCrime",
+      items: [
+        {
+          heading: {
+            text: "What is a wildlife crime"
+          },
+          content: {
+            html: '<p class="govuk-body">"Wildlife crime" means any offence under the Wildlife &amp; Countryside Act 1981, the ' +
+              'Conservation (Natural Habitats &c.) Regulations 1994, the Protection of Badgers Act 1992, ' +
+              'the Protection of Wild Mammals (Scotland) Act 2002, the Animal Health & Welfare ' +
+              '(Scotland) Act 2006, the Protection of Animals (Scotland) Act 1912 and the Wild Mammals '+
+              '(Protection) Act 1996 (all as amended).</p>'
+          },
+          expanded: false
+        }
+      ]
+    })}}
 
     {{ govukButton({
       text: "Accept and send"

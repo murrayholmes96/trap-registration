@@ -1,3 +1,5 @@
+{% extends "govuk/template.njk" %}
+
 {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
 {% from "govuk/components/skip-link/macro.njk" import govukSkipLink %}
 {% from "naturescot/components/header/macro.njk" import naturescotHeader %}
@@ -7,12 +9,17 @@
 
 {% set assetPath = "/govuk-frontend/assets" %}
 
+{% block pageTitle %}NatureScot - Licensing - Traps Registration{% endblock %}
+
+{% block headIcons %}
+{% endblock %}
+
 {% block head %}
     <link rel="stylesheet" href="/dist/main.css">
 {% endblock %}
 
-
 {% block bodyStart %}
+  <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
 {% endblock %}
 
 {% block skipLink %}
@@ -84,4 +91,7 @@
 
 {% block bodyEnd %}
   <script src="/govuk-frontend/all.js"></script>
+  <script>window.GOVUKFrontend.initAll()</script>
 {% endblock %}
+</body>
+</html>
