@@ -2,7 +2,7 @@
 
 
 {% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
-{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
 {% block content %}
 
@@ -19,8 +19,7 @@
   {% endif %}
 
   <form method="post">
-    {{ govukRadios({
-      classes: "govuk-radios--inline",
+    {{ govukCheckboxes({
       idPrefix: "comply",
       name: "comply",
       fieldset: {
@@ -45,11 +44,6 @@
           value: "yes",
           text: "Yes",
           checked: model.comply === 'yes'
-        },
-        {
-          value: "no",
-          text: "No",
-          checked: model.comply === 'no'
         }
       ]
     }) }}
