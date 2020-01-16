@@ -1,6 +1,7 @@
 {% extends "_base.njk" %}
 
 {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+{% from "govuk/components/warning-text/macro.njk" import govukWarningText %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
 {% block content %}
   <form method="post">
@@ -173,6 +174,11 @@
     <h2 class="govuk-heading-m">Now send your registration</h2>
 
     <p class="govuk-body">Please note that it is your responsibility to ensure that the information you have provided is correct before sending this registration.</p>
+
+    {{ govukWarningText({
+      text: "If you no longer require this registration or you are convicted of a wildlife crime you must inform us.",
+      iconFallbackText: "Warning"
+    }) }}
 
     {{ govukButton({
       text: "Accept and send"
