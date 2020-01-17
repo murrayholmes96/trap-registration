@@ -1,7 +1,46 @@
 {% extends "_base.njk" %}
 
+{% from "govuk/components/accordion/macro.njk" import govukAccordion %}
 {% block content %}
-    <h1 class="govuk-heading-xl">Not eligible for registration</h1>
+  <h1 class="govuk-heading-xl">You are not eligible to use traps</h1>
 
-    <p class="govuk-body">If you have any unspent criminal convictions under the Wildlife and Countryside Act (1981), you are not eligible to register to use traps.</p>
+  <p class="govuk-body">If you have been convicted of a wildlife crime, you are not be eligible to register to use traps under a General Licence. Any person not able to use the General Licence can still apply for an individual licence. For more information, please contact the NatureScot Licensing Team.</p>
+  <p class="govuk-body">
+      Email:<br>
+    <strong class="govuk-!-font-weight-bold">
+      <a class="govuk-link" href="mailto:licensing@nature.scot">licensing@nature.scot</a>
+    </strong>
+  </p>
+  {{ govukAccordion({
+      id: "crimeExplanations",
+      items: [
+        {
+          heading: {
+            text: "What does convicted mean"
+          },
+          content: {
+            html: '<p class="govuk-body">"Convicted" means convicted of a wildlife crime on or after ' +
+              '1 January 2015 unless, in respect of that offence, they were either dismissed with an admonition, ' +
+              'they are a rehabilitated person (for the purposes of the Rehabilitation of Offenders Act 1974 and ' +
+              'that conviction is spent), or a court discharged them absolutely.</p>' +
+              '<p class="govuk-body">Any person not able to use the General Licence can still apply for an ' +
+              'individual licence.</p>'
+          },
+          expanded: false
+        },
+        {
+          heading: {
+            text: "What is a wildlife crime"
+          },
+          content: {
+            html: '<p class="govuk-body">"Wildlife crime" means any offence under the Wildlife &amp; Countryside Act 1981, the ' +
+              'Conservation (Natural Habitats &c.) Regulations 1994, the Protection of Badgers Act 1992, ' +
+              'the Protection of Wild Mammals (Scotland) Act 2002, the Animal Health & Welfare ' +
+              '(Scotland) Act 2006, the Protection of Animals (Scotland) Act 1912 and the Wild Mammals '+
+              '(Protection) Act 1996 (all as amended).</p>'
+          },
+          expanded: false
+        }
+      ]
+    })}}
 {% endblock %}
