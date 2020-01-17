@@ -20,8 +20,6 @@ const confirmController = async (req) => {
         noGeneral2: req.session.general2 ? 'no' : 'yes',
         general3: req.session.general3 ? 'yes' : 'no',
         noGeneral3: req.session.general3 ? 'no' : 'yes',
-        general4: req.session.general4 ? 'yes' : 'no',
-        noGeneral4: req.session.general4 ? 'no' : 'yes',
         comply: req.session.comply === 'yes' ? 'yes' : 'no',
         noComply: req.session.comply === 'yes' ? 'no' : 'yes'
       },
@@ -37,7 +35,6 @@ const confirmController = async (req) => {
         general1: req.session.general1 ? 'yes' : 'no',
         general2: req.session.general2 ? 'yes' : 'no',
         general3: req.session.general3 ? 'yes' : 'no',
-        general4: req.session.general4 ? 'yes' : 'no',
         comply: req.session.comply === 'yes' ? 'yes' : 'no',
         fullName: req.session.fullName,
         addressLine1: req.session.addressLine1,
