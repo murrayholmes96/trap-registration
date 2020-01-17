@@ -34,15 +34,33 @@ const detailsController = (req) => {
     req.session.townError = true;
   }
 
-  if (req.body.addressPostcode === undefined || req.body.addressPostcode.trim() === '') {
+  // The shortest UK postcode is 'N19GU'.
+  // The longest should be something like 'IV30 6GR', but we're not going to
+  // check for too much data at this time.
+  if (
+    req.body.addressPostcode === undefined ||
+    req.body.addressPostcode.trim() === '' ||
+    req.body.addressPostcode.trim().length < 5
+  ) {
     req.session.postcodeError = true;
   }
 
-  if (req.body.phoneNumber === undefined || req.body.phoneNumber.trim() === '') {
+  // The smallest, non-local, non-shortcode UK phone number is '08001111'.
+  // The longest could be something like 	'+44 (01234) 567 890', but we're not
+  // going to check for too much data at this time.
+  if (
+    req.body.phoneNumber === undefined ||
+    req.body.phoneNumber.trim() === '' ||
+    req.body.phoneNumber.trim().length < 8
+  ) {
     req.session.phoneError = true;
   }
 
-  if (req.body.emailAddress === undefined || req.body.emailAddress.trim() === '') {
+  if (
+    req.body.emailAddress === undefined ||
+    req.body.emailAddress.trim() === '' ||
+    !req.body.emailAddress.includes('@')
+  ) {
     req.session.emailError = true;
   }
 
