@@ -1,22 +1,22 @@
 import {ReturnState} from './_base.js';
 
 const convictionController = (req) => {
-  // Did the user tell us they're free of convictions.
-  if (req.body.conviction === 'yes') {
+  // Did the user tell us they have no convictions.
+  if (req.body.conviction === 'no') {
     // Then we don't have any errors. This clears any previous errors.
     req.session.convictionError = false;
     // Save the decision.
-    req.session.conviction = req.body.conviction;
+    req.session.conviction = false;
     // Follow the 'happy path'.
     return ReturnState.Positive;
   }
 
-  // Did the user tell us they're not free of convictions.
-  if (req.body.conviction === 'no') {
-    // It's a silly answer, but we not an error. This clears any previous errors.
+  // Did the user tell us they're have some convictions.
+  if (req.body.conviction === 'yes') {
+    // It's a silly answer, but not an error. This clears any previous errors.
     req.session.convictionError = false;
     // Save the decision.
-    req.session.conviction = req.body.conviction;
+    req.session.conviction = true;
     // Go down the 'STOP' path.
     return ReturnState.Negative;
   }

@@ -36,7 +36,7 @@ router.use(
     path: 'conviction',
     back: 'gdpr',
     positiveForward: 'eligible',
-    negativeForward: 'no-conviction',
+    negativeForward: 'conviction-stop',
     controller: ConvictionController
   })
 );
@@ -95,7 +95,7 @@ router.use(
 
 router.use(
   Page({
-    path: 'no-conviction',
+    path: 'conviction-stop',
     back: 'conviction'
   })
 );
