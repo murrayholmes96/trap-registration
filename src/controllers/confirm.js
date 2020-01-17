@@ -12,8 +12,8 @@ const confirmController = async (req) => {
     await notifyClient.sendEmail('7b7a0810-a15d-4c72-8fcf-c1e7494641b3', 'traps@nature.scot', {
       personalisation: {
         regNo: req.session.regNo,
-        convictions: req.session.conviction === 'yes' ? 'yes' : 'no',
-        noConvictions: req.session.conviction === 'yes' ? 'no' : 'yes',
+        convictions: req.session.conviction ? 'yes' : 'no',
+        noConvictions: req.session.conviction ? 'no' : 'yes',
         general1: req.session.general1 ? 'yes' : 'no',
         noGeneral1: req.session.general1 ? 'no' : 'yes',
         general2: req.session.general2 ? 'yes' : 'no',
