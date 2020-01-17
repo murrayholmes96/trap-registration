@@ -2,6 +2,7 @@
 
 {% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
 {% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/accordion/macro.njk" import govukAccordion %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
 {% block content %}
 
@@ -10,7 +11,7 @@
       titleText: "There is a problem",
       errorList: [
         {
-          text: "You must confirm you either do or do not have any unspent criminal convictions.",
+          text: "You must select if you have been convicted of a wildlife crime.",
           href: "#conviction-error"
         }
       ]
@@ -24,13 +25,13 @@
         name: "conviction",
         fieldset: {
             legend: {
-                text: "Can you confirm you do not have any unspent criminal convictions under the Wildlife and Countryside Act (1981)?",
+                text: "Have you been convicted of a wildlife crime?",
                 isPageHeading: true,
                 classes: "govuk-fieldset__legend--xl"
             }
         },
         errorMessage: {
-            text: "You must confirm you either do or do not have any unspent criminal convictions."
+            text: "You must select if you have been convicted of a wildlife crime."
         } if model.convictionError,
         items: [
             {
@@ -45,6 +46,39 @@
             }
         ]
     }) }}
+
+    {{ govukAccordion({
+      id: "crimeExplanations",
+      items: [
+        {
+          heading: {
+            text: "What does convicted mean"
+          },
+          content: {
+            html: '<p class="govuk-body">"Convicted" means convicted of a wildlife crime on or after ' +
+              '1 January 2015 unless, in respect of that offence, they were either dismissed with an admonition, ' +
+              'they are a rehabilitated person (for the purposes of the Rehabilitation of Offenders Act 1974 and ' +
+              'that conviction is spent), or a court discharged them absolutely.</p>' +
+              '<p class="govuk-body">Any person not able to use the General Licence can still apply for an ' +
+              'individual licence.</p>'
+          },
+          expanded: false
+        },
+        {
+          heading: {
+            text: "What is a wildlife crime"
+          },
+          content: {
+            html: '<p class="govuk-body">"Wildlife crime" means any offence under the Wildlife &amp; Countryside Act 1981, the ' +
+              'Conservation (Natural Habitats &c.) Regulations 1994, the Protection of Badgers Act 1992, ' +
+              'the Protection of Wild Mammals (Scotland) Act 2002, the Animal Health & Welfare ' +
+              '(Scotland) Act 2006, the Protection of Animals (Scotland) Act 1912 and the Wild Mammals '+
+              '(Protection) Act 1996 (all as amended).</p>'
+          },
+          expanded: false
+        }
+      ]
+    })}}
 
     {{ govukButton({
         text: "Continue"
