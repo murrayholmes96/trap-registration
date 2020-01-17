@@ -9,20 +9,18 @@ const generalController = (req) => {
     req.session.general1 = false;
     req.session.general2 = false;
     req.session.general3 = false;
-    req.session.general4 = false;
     // Reload the page to highlight errors.
     return ReturnState.Error;
   }
 
   // The user submitted a single value
-  if (['general1', 'general2', 'general3', 'general4'].includes(req.body.general)) {
+  if (['general1', 'general2', 'general3'].includes(req.body.general)) {
     // This is not an error.
     req.session.generalError = false;
     // Unset any saved value.
     req.session.general1 = false;
     req.session.general2 = false;
     req.session.general3 = false;
-    req.session.general4 = false;
     // Check the submitted value.
     if (req.body.general === 'general1') {
       req.session.general1 = true;
@@ -36,10 +34,6 @@ const generalController = (req) => {
       req.session.general3 = true;
     }
 
-    if (req.body.general === 'general4') {
-      req.session.general4 = true;
-    }
-
     // Continue onwards.
     return ReturnState.Positive;
   }
@@ -50,7 +44,6 @@ const generalController = (req) => {
     req.session.general1 = false;
     req.session.general2 = false;
     req.session.general3 = false;
-    req.session.general4 = false;
     // Check for each of the submitted values.
     if (req.body.general.includes('general1')) {
       req.session.general1 = true;
@@ -64,12 +57,8 @@ const generalController = (req) => {
       req.session.general3 = true;
     }
 
-    if (req.body.general.includes('general4')) {
-      req.session.general4 = true;
-    }
-
     // Make sure the user's made at least one selection.
-    const atLeastOne = req.session.general1 || req.session.general2 || req.session.general3 || req.session.general4;
+    const atLeastOne = req.session.general1 || req.session.general2 || req.session.general3;
     if (atLeastOne) {
       // This is not an error.
       req.session.generalError = false;
@@ -84,7 +73,6 @@ const generalController = (req) => {
     req.session.general1 = false;
     req.session.general2 = false;
     req.session.general3 = false;
-    req.session.general4 = false;
     // Reload the page to highlight errors.
     return ReturnState.Error;
   }
@@ -96,7 +84,6 @@ const generalController = (req) => {
   req.session.general1 = false;
   req.session.general2 = false;
   req.session.general3 = false;
-  req.session.general4 = false;
   // Reload the page to highlight errors.
   return ReturnState.Error;
 };
