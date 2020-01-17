@@ -2,6 +2,7 @@
 
 {% from "govuk/components/button/macro.njk" import govukButton %}
 
+{% from "govuk/components/warning-text/macro.njk" import govukWarningText %}
 {% block content %}
     <h1 class="govuk-heading-xl">Trap Registration</h1>
 
@@ -23,6 +24,12 @@
     </ul>
 
     <p class="govuk-body">Registering takes around 5 minutes.</p>
+
+    {{ govukWarningText({
+      text: "Please note that even if you have previously registered with Police " +
+        "Scotland, you must re-register with NatureScot to continue to use traps.",
+      iconFallbackText: "Warning"
+    }) }}
 
     {{ govukButton({
         text: "Start now",
