@@ -8,7 +8,7 @@
 {% block head %}
 {{ super() }}
 <style>
-#wildlifeCrime .govuk-accordion__controls {
+#crimeExplanations .govuk-accordion__controls {
   display:none;
 }
 </style>
@@ -175,8 +175,22 @@
     }) }}
 
     {{ govukAccordion({
-      id: "wildlifeCrime",
+      id: "crimeExplanations",
       items: [
+        {
+          heading: {
+            text: "What does convicted mean"
+          },
+          content: {
+            html: '<p class="govuk-body">"Convicted" means convicted of a wildlife crime on or after ' +
+              '1 January 2015 unless, in respect of that offence, they were either dismissed with an admonition, ' +
+              'they are a rehabilitated person (for the purposes of the Rehabilitation of Offenders Act 1974 and ' +
+              'that conviction is spent), or a court discharged them absolutely.</p>' +
+              '<p class="govuk-body">Any person not able to use the General Licence can still apply for an ' +
+              'individual licence.</p>'
+          },
+          expanded: false
+        },
         {
           heading: {
             text: "What is a wildlife crime"
