@@ -19,6 +19,19 @@
       <p class="govuk-body">
         You must understand and comply with the conditions attached to the General Licences.
       </p>
+
+{% if model.meatBait %}
+    <p class="govuk-body">We will ask you every year what non-target species you have caught using <a href="#">this return form</a>.</p>
+    <p class="govuk-body">Please make sure you keep a record of:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>what non-target species are caught</li>
+      <li>the location of the trap</li>
+      <li>how many of each non-target species are trapped</li>
+      <li>the trap type that was used</li>
+    </ul>
+    <p class="govuk-body">Please submit this information, even if you have not caught anything, within one month of the expiry of the General Licence, on or before 31st January.</p>
+{% endif %}
+
       <p class="govuk-body">
         We will contact you 3 months before your registration expires to remind you to register again.
       </p>
