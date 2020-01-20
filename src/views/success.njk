@@ -3,8 +3,9 @@
 {% from "govuk/components/panel/macro.njk" import govukPanel %}
 {% block content %}
       {{ govukPanel({
-        titleText: "Application complete",
-        html: "Your registration number<br><strong>"+model.regNo+"</strong>"
+        titleText: "Registration complete",
+        html: "Your registration number is<br><strong>"+model.regNo+"</strong><br><br>" +
+              "Expiry date<br><strong>"+model.expiryDate+"</strong>"
       }) }}
 
       <p class="govuk-body">We have sent you a confirmation email.</p>
@@ -18,14 +19,32 @@
       <p class="govuk-body">
         You must understand and comply with the conditions attached to the General Licences.
       </p>
+
+{% if model.meatBait %}
+    <p class="govuk-body">We will ask you every year what non-target species you have caught using <a href="#">this return form</a>.</p>
+    <p class="govuk-body">Please make sure you keep a record of:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>what non-target species are caught</li>
+      <li>the location of the trap</li>
+      <li>how many of each non-target species are trapped</li>
+      <li>the trap type that was used</li>
+    </ul>
+    <p class="govuk-body">Please submit this information, even if you have not caught anything, within one month of the expiry of the General Licence, on or before 31st January.</p>
+{% endif %}
+
       <p class="govuk-body">
         We will contact you 3 months before your registration expires to remind you to register again.
       </p>
       <p class="govuk-body">
-        If you no longer require this registration or you are convicted of a wildlife crime under the Wildlife and Countryside Act (1981) you must inform us.
+        If you no longer require this registration or you are convicted of a wildlife crime you must inform us.
+      </p>
+      <p class="govuk-body">
+          Email:<br>
+        <strong class="govuk-!-font-weight-bold"><a class="govuk-link" href="mailto:licensing@nature.scot">licensing@nature.scot</a></strong>
       </p>
 
+
       <p class="govuk-body">
-        <a href="#" class="govuk-link">What did you think of this service?</a> (takes 30 seconds)
+        <a href="#" class="govuk-link">What do you think of this service?</a> (takes 30 seconds)
       </p>
 {% endblock %}

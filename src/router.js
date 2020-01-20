@@ -100,7 +100,7 @@ router.use(
 router.use(
   Page({
     path: 'success',
-    back: 'details'
+    back: 'confirm'
   })
 );
 
