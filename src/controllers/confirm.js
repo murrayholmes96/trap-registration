@@ -21,7 +21,9 @@ const confirmController = async (req) => {
         general3: req.session.general3 ? 'yes' : 'no',
         noGeneral3: req.session.general3 ? 'no' : 'yes',
         comply: req.session.comply === 'yes' ? 'yes' : 'no',
-        noComply: req.session.comply === 'yes' ? 'no' : 'yes'
+        noComply: req.session.comply === 'yes' ? 'no' : 'yes',
+        meatBait: req.session.meatBait ? 'yes' : 'no',
+        noMeatBait: req.session.meatBait ? 'no' : 'yes'
       },
       reference: req.session.regNo,
       emailReplyToId: '4a9b34d1-ab1f-4806-83df-3e29afef4165'
@@ -36,6 +38,7 @@ const confirmController = async (req) => {
         general2: req.session.general2 ? 'yes' : 'no',
         general3: req.session.general3 ? 'yes' : 'no',
         comply: req.session.comply === 'yes' ? 'yes' : 'no',
+        meatBait: req.session.meatBait ? 'yes' : 'no',
         fullName: req.session.fullName,
         addressLine1: req.session.addressLine1,
         addressLine2: req.session.addressLine2,
