@@ -5,10 +5,11 @@ const router = express.Router();
 import {Page} from './controllers/_base.js';
 import StartController from './controllers/start.js';
 import GdprController from './controllers/gdpr.js';
-import ComplyController from './controllers/comply.js';
 import ConvictionController from './controllers/conviction.js';
 import EligibleController from './controllers/eligible.js';
 import GeneralController from './controllers/general.js';
+import ComplyController from './controllers/comply.js';
+import MeatbaitController from './controllers/meat-bait.js';
 import DetailsController from './controllers/details.js';
 import ConfirmController from './controllers/confirm.js';
 
@@ -63,15 +64,25 @@ router.use(
   Page({
     path: 'comply',
     back: 'general',
-    positiveForward: 'details',
+    positiveForward: 'meat-bait',
     controller: ComplyController
   })
 );
 
 router.use(
   Page({
-    path: 'details',
+    path: 'meat-bait',
     back: 'comply',
+    positiveForward: 'details',
+    negativeForward: 'details',
+    controller: MeatbaitController
+  })
+);
+
+router.use(
+  Page({
+    path: 'details',
+    back: 'meat-bait',
     positiveForward: 'confirm',
     controller: DetailsController
   })

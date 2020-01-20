@@ -1,0 +1,115 @@
+{% extends "_base.njk" %}
+
+{% block head %}
+{{ super() }}
+<style>
+#trapExplanations .govuk-accordion__section-content img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 15px;
+}
+</style>
+{% endblock %}
+
+{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/warning-text/macro.njk" import govukWarningText %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/accordion/macro.njk" import govukAccordion %}
+
+{% block content %}
+
+  {% if model.meatBaitError %}
+    {{ govukErrorSummary({
+      titleText: "There is a problem",
+      errorList: [
+        {
+          text: "You must select if you intend to use meat baits in your traps.",
+          href: "#meatbait-error"
+        }
+      ]
+    }) }}
+  {% endif %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+<form method="post">
+    {{ govukRadios({
+        classes: "govuk-radios--inline",
+        idPrefix: "meatbait",
+        name: "meatbait",
+        fieldset: {
+            legend: {
+                text: "Do you intend to use meat baits in your traps?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--xl"
+            }
+        },
+        errorMessage: {
+            text: "You must select if you intend to use meat baits in your traps."
+        } if model.meatBaitError,
+        items: [
+            {
+                value: "yes",
+                text: "Yes",
+                checked: model.meatBait === true
+            },
+            {
+                value: "no",
+                text: "No",
+                checked: model.meatBait === false
+            }
+        ]
+    }) }}
+
+    {{ govukWarningText({
+      text: "Using meat baits is only permitted in Larsen mate and Larsen pod traps.",
+      iconFallbackText: "Warning"
+    }) }}
+
+    <p class="govuk-body">We will ask you every year what non-target species you have caught using <a href="#">this return form</a>.</p>
+    <p class="govuk-body">Please make sure you keep a record of:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>what non-target species are caught</li>
+      <li>the location of the trap</li>
+      <li>how many of each non-target species are trapped</li>
+      <li>the trap type that was used</li>
+    </ul>
+    <p class="govuk-body">Please submit this information, even if you have not caught anything, within one month of the expiry of the General Licence, on or before 31st January.</p>
+
+    {{ govukButton({
+        text: "Continue"
+    }) }}
+</form>
+    </div>
+    <div class="govuk-grid-column-one-third">
+    {{ govukAccordion({
+      id: "trapExplanations",
+      items: [
+        {
+          heading: {
+            text: "What is a Larsen mate trap?"
+          },
+          content: {
+            html: '<img src="/dist/placeholder-900x600.png" alt="A Larsen mate trap">' +
+              '<p class="govuk-body">"Larsen mate trap" means a portable spring-operated cage-trap comprising two shell sections hinged along one edge connected by one or more springs and kept open by a split-rod/trip-perch (as manufactured by Elgeeco; or any trap which is equivalent to it in all relevant respects). When open (set) the minimum distance between any two corners of the trap must be 39 cm. The trap must not shut tightly along the majority of the length of the meeting edges.</p>'
+          },
+          expanded: false
+        },
+        {
+          heading: {
+            text: "What is a Larsen pod trap?"
+          },
+          content: {
+            html: '<img src="/dist/placeholder-900x600.png" alt="A Larsen pod trap">' +
+              '<p class="govuk-body">"Larsen pod trap" means a portable spring or gravity operated cage-trap which has a single compartment with two side-mounted, spring activated trap-doors which can be set independently.</p>'
+          },
+          expanded: false
+        }
+      ]
+    })}}
+
+    </div>
+  </div>
+
+{% endblock %}
