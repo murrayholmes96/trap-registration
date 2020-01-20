@@ -3,8 +3,9 @@
 {% from "govuk/components/panel/macro.njk" import govukPanel %}
 {% block content %}
       {{ govukPanel({
-        titleText: "Application complete",
-        html: "Your registration number<br><strong>"+model.regNo+"</strong>"
+        titleText: "Registration complete",
+        html: "Your registration number is<br><strong>"+model.regNo+"</strong><br><br>" +
+              "Expiry date<br><strong>"+model.expiryDate+"</strong>"
       }) }}
 
       <p class="govuk-body">We have sent you a confirmation email.</p>

@@ -1,11 +1,32 @@
 import NotifyClient from 'notifications-node-client';
 import {ReturnState} from './_base.js';
 
+/**
+ * Takes an issue date, calculates an expiry date based on that and converts it
+ * in to a formatted string.
+ *
+ * @param {Date} issueDate when the registration is issued
+ * @returns {String} a formatted date string
+ */
+const buildExpiryDateString = (issueDate) => {
+  const expiryDateTime = new Date(issueDate);
+  expiryDateTime.setFullYear(expiryDateTime.getFullYear() + 5);
+
+  const d = String(expiryDateTime.getDate()).padStart(2, '0');
+  const m = String(expiryDateTime.getMonth() + 1).padStart(2, '0');
+  const y = String(expiryDateTime.getFullYear()).padStart(4, '0');
+
+  return `${d}/${m}/${y}`;
+};
+
 const confirmController = async (req) => {
   const notifyClient = new NotifyClient.NotifyClient(process.env.NOTIFY_API_KEY);
 
   // TODO: Replace with an API call that guarantees an unused ID.
-  req.session.regNo = `NS-TRP-${String(Math.floor(Math.random() * Math.floor(9999999))).padStart(7, '0')}`;
+  req.session.regNo = `NS-TRP-${String(Math.floor(Math.random() * Math.floor(9999))).padStart(4, '0')}`;
+
+  req.session.registrationDateTime = new Date();
+  req.session.expiryDate = buildExpiryDateString(req.session.registrationDateTime);
 
   try {
     // Send an email to the applicant, confirming their registration.
@@ -23,7 +44,8 @@ const confirmController = async (req) => {
         comply: req.session.comply === 'yes' ? 'yes' : 'no',
         noComply: req.session.comply === 'yes' ? 'no' : 'yes',
         meatBait: req.session.meatBait ? 'yes' : 'no',
-        noMeatBait: req.session.meatBait ? 'no' : 'yes'
+        noMeatBait: req.session.meatBait ? 'no' : 'yes',
+        expiryDate: req.session.expiryDate
       },
       reference: req.session.regNo,
       emailReplyToId: '4a9b34d1-ab1f-4806-83df-3e29afef4165'
@@ -47,7 +69,7 @@ const confirmController = async (req) => {
         addressPostcode: req.session.addressPostcode,
         phoneNumber: req.session.phoneNumber,
         emailAddress: req.session.emailAddress,
-        registrationDateTime: new Date().toISOString()
+        registrationDateTime: req.session.registrationDateTime.toISOString()
       },
       reference: req.session.regNo,
       emailReplyToId: '4a9b34d1-ab1f-4806-83df-3e29afef4165'
