@@ -75,7 +75,12 @@
       <li>how many of each non-target species are trapped</li>
       <li>the trap type that was used</li>
     </ul>
-    <p class="govuk-body">Please submit this information, even if you have not caught anything, within one month of the expiry of the General Licence, on or before 31st January.</p>
+    <p class="govuk-body">We will contact you by email one month before the expiry of the General Licences to remind you to submit your return. Please submit this information, even if you have not caught anything, on or before 31st January.</p>
+
+    {{ govukWarningText({
+      text: "If you fail to complete a return we will remove or suspend your right to use meat baits.",
+      iconFallbackText: "Warning"
+    }) }}
 
     {{ govukButton({
         text: "Continue"
