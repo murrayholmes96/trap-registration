@@ -9,7 +9,7 @@
   "scripts": {
     "scss": "node-sass --importer node_modules/node-sass-package-importer/dist/cli.js -o dist src/main.scss",
     "lint": "xo",
-    "build": "npm run lint && npm run scss && cp node_modules/naturescot-frontend/naturescot/assets/images/naturescot-logo.png dist/ && cp src/images/placeholder-900x600.png dist/",
+    "build": "npm run lint && npm run scss && cp node_modules/naturescot-frontend/naturescot/assets/images/naturescot-logo.png dist/",
     "postinstall": "npm run build",
     "start": "node --experimental-modules src/server.js",
     "dev": "nodemon --exec \"npm run build && npm run start\" -e js,njk,scss"
