@@ -1,5 +1,7 @@
 import express from 'express';
 
+import config from '../config.js';
+
 /**
  * Save a record of our visitor's current page to their session.
  *
@@ -70,11 +72,12 @@ const renderPage = (req, res, options) => {
   if (guardAllows(req.session, options)) {
     saveVisitedPage(req.session, options.path);
     res.render(`${options.path}.njk`, {
+      pathPrefix: config.pathPrefix,
       backUrl: options.back,
       model: req.session
     });
   } else {
-    res.status(403).render('error.njk');
+    res.status(403).render('error.njk', {pathPrefix: config.pathPrefix});
   }
 };
 
@@ -105,24 +108,24 @@ const ReturnState = Object.freeze({
 const Page = (options) => {
   const router = express.Router();
 
-  router.get(`/${options.path}`, (req, res) => {
+  router.get(`${config.pathPrefix}/${options.path}`, (req, res) => {
     renderPage(req, res, options);
   });
 
-  router.post(`/${options.path}`, async (req, res) => {
+  router.post(`${config.pathPrefix}/${options.path}`, async (req, res) => {
     let decision;
     try {
       decision = await options.controller(req, options);
       if (decision === ReturnState.Positive) {
-        res.redirect(options.positiveForward);
+        res.redirect(`${config.pathPrefix}/${options.positiveForward}`);
       } else if (decision === ReturnState.Negative) {
-        res.redirect(options.negativeForward);
+        res.redirect(`${config.pathPrefix}/${options.negativeForward}`);
       } else {
         renderPage(req, res, options);
       }
     } catch (error) {
       console.log(error);
-      res.status(500).render('error.njk');
+      res.status(500).render('error.njk', {pathPrefix: config.pathPrefix});
     }
   });
 

@@ -1,4 +1,5 @@
 import NotifyClient from 'notifications-node-client';
+import config from '../config.js';
 import {ReturnState} from './_base.js';
 
 /**
@@ -20,7 +21,7 @@ const buildExpiryDateString = (issueDate) => {
 };
 
 const confirmController = async (req) => {
-  const notifyClient = new NotifyClient.NotifyClient(process.env.NOTIFY_API_KEY);
+  const notifyClient = new NotifyClient.NotifyClient(config.notifyApiKey);
 
   // TODO: Replace with an API call that guarantees an unused ID.
   req.session.regNo = `NS-TRP-${String(Math.floor(Math.random() * Math.floor(9999))).padStart(4, '0')}`;
