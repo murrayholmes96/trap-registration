@@ -2,8 +2,10 @@ body {
   margin: 0;
 }
 
-$govuk-assets-path: '/govuk-frontend/assets/';
+$path-prefix: '';
+
+$govuk-assets-path: $path-prefix + '/govuk-frontend/assets/';
 @import "~govuk-frontend/govuk/all";
 
-$naturescot-logo: '/dist/naturescot-logo.png';
+$naturescot-logo: $path-prefix + '/dist/naturescot-logo.png';
 @import "~naturescot-frontend/naturescot/all";
