@@ -6,19 +6,19 @@
 {% from "govuk/components/button/macro.njk" import govukButton %}
 
 {% block head %}
-{{ super() }}
-<style>
-#crimeExplanations .govuk-accordion__controls {
-  display:none;
-}
-</style>
+  {{ super() }}
+  <style>
+    #crimeExplanations .govuk-accordion__controls {
+      display: none;
+    }
+  </style>
 {% endblock %}
 
 {% block content %}
   <form method="post">
     <h1 class="govuk-heading-xl">Check your answers before sending your registration</h1>
     <h2 class="govuk-heading-m">Registration details</h2>
-{{ govukSummaryList({
+    {{ govukSummaryList({
   rows: [
     {
       key: {
@@ -125,8 +125,8 @@
   ]
 })}}
 
-      <h2 class="govuk-heading-m">Personal details</h2>
-{{ govukSummaryList({
+    <h2 class="govuk-heading-m">Personal details</h2>
+    {{ govukSummaryList({
   rows: [
     {
       key: {

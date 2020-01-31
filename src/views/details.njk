@@ -38,9 +38,9 @@
     }) }}
   {% endif %}
 
-    <form method="post">
+  <form method="post">
 
-{% call govukFieldset({
+    {% call govukFieldset({
   legend: {
     text: "What are your personal details?",
     classes: "govuk-fieldset__legend--xl",
@@ -48,7 +48,7 @@
   }
 }) %}
 
-  {{ govukInput({
+    {{ govukInput({
     label: {
       text: "Full name"
     },
@@ -65,7 +65,7 @@
     }
   }) }}
 
-  {{ govukInput({
+    {{ govukInput({
     label: {
       html: 'Building and street <span class="govuk-visually-hidden">line 1 of 2</span>'
     },
@@ -78,7 +78,7 @@
     } if model.addressError
   }) }}
 
-  {{ govukInput({
+    {{ govukInput({
     label: {
       html: '<span class="govuk-visually-hidden">Building and street line 2 of 2</span>'
     },
@@ -88,7 +88,7 @@
     value: model.addressLine2
   }) }}
 
-  {{ govukInput({
+    {{ govukInput({
     label: {
       text: "Town or city"
     },
@@ -101,7 +101,7 @@
     } if model.townError
   }) }}
 
-  {{ govukInput({
+    {{ govukInput({
     label: {
       text: "County"
     },
@@ -111,7 +111,7 @@
     value: model.addressCounty
   }) }}
 
-  {{ govukInput({
+    {{ govukInput({
     label: {
       text: "Postcode"
     },
@@ -124,7 +124,7 @@
     } if model.postcodeError
   }) }}
 
-  {{ govukInput({
+    {{ govukInput({
     label: {
       text: "Phone number"
     },
@@ -139,7 +139,7 @@
     autocomplete: "tel"
   }) }}
 
-  {{ govukInput({
+    {{ govukInput({
     label: {
       text: "Email address"
     },
@@ -152,10 +152,10 @@
     } if model.emailError
   }) }}
 
-{% endcall %}
+    {% endcall %}
 
-        {{ govukButton({
+    {{ govukButton({
           text: "Continue"
         }) }}
-    </form>
+  </form>
 {% endblock %}

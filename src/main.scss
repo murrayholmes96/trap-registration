@@ -5,7 +5,7 @@ body {
 $path-prefix: '';
 
 $govuk-assets-path: $path-prefix + '/govuk-frontend/assets/';
-@import "~govuk-frontend/govuk/all";
+@import '~govuk-frontend/govuk/all';
 
 $naturescot-logo: $path-prefix + '/dist/naturescot-logo.png';
-@import "~naturescot-frontend/naturescot/all";
+@import '~naturescot-frontend/naturescot/all';

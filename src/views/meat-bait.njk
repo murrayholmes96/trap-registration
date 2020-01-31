@@ -1,14 +1,14 @@
 {% extends "_base.njk" %}
 
 {% block head %}
-{{ super() }}
-<style>
-#trapExplanations .govuk-accordion__section-content img {
-  width: 100%;
-  height: auto;
-  margin-bottom: 15px;
-}
-</style>
+  {{ super() }}
+  <style>
+    #trapExplanations .govuk-accordion__section-content img {
+      width: 100%;
+      height: auto;
+      margin-bottom: 15px;
+    }
+  </style>
 {% endblock %}
 
 {% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
@@ -33,8 +33,8 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-<form method="post">
-    {{ govukRadios({
+      <form method="post">
+        {{ govukRadios({
         classes: "govuk-radios--inline",
         idPrefix: "meatbait",
         name: "meatbait",
@@ -62,33 +62,33 @@
         ]
     }) }}
 
-    {{ govukWarningText({
+        {{ govukWarningText({
       text: "Using meat baits is only permitted in Larsen mate and Larsen pod traps.",
       iconFallbackText: "Warning"
     }) }}
 
-    <p class="govuk-body">We will ask you every year what non-target species you have caught using <a href="#">this return form</a>.</p>
-    <p class="govuk-body">Please make sure you keep a record of:</p>
-    <ul class="govuk-list govuk-list--bullet">
-      <li>what non-target species are caught</li>
-      <li>the location of the trap</li>
-      <li>how many of each non-target species are trapped</li>
-      <li>the trap type that was used</li>
-    </ul>
-    <p class="govuk-body">We will contact you by email one month before the expiry of the General Licences to remind you to submit your return. Please submit this information, even if you have not caught anything, on or before 31st January.</p>
+        <p class="govuk-body">We will ask you every year what non-target species you have caught using <a href="#">this return form</a>.</p>
+        <p class="govuk-body">Please make sure you keep a record of:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>what non-target species are caught</li>
+          <li>the location of the trap</li>
+          <li>how many of each non-target species are trapped</li>
+          <li>the trap type that was used</li>
+        </ul>
+        <p class="govuk-body">We will contact you by email one month before the expiry of the General Licences to remind you to submit your return. Please submit this information, even if you have not caught anything, on or before 31st January.</p>
 
-    {{ govukWarningText({
+        {{ govukWarningText({
       text: "If you fail to complete a return we will remove or suspend your right to use meat baits.",
       iconFallbackText: "Warning"
     }) }}
 
-    {{ govukButton({
+        {{ govukButton({
         text: "Continue"
     }) }}
-</form>
+      </form>
     </div>
     <div class="govuk-grid-column-one-third">
-    {{ govukAccordion({
+      {{ govukAccordion({
       id: "trapExplanations",
       items: [
         {

@@ -2,9 +2,9 @@
 
 {% from "govuk/components/button/macro.njk" import govukButton %}
 {% block content %}
-    <h1 class="govuk-heading-xl">How we use your information</h1>
+  <h1 class="govuk-heading-xl">How we use your information</h1>
 
-    <p class="govuk-body">
+  <p class="govuk-body">
         Your details will be held by NatureScot for the purposes of trap registration
         for use of traps under NatureScot’s General Licences. We will share this
         information with Police Scotland for the purposes of crime prevention
@@ -13,11 +13,11 @@
         for further information.
     </p>
 
-    <form method="post">
-        <input type="hidden" name="acceptGdpr" value="yes">
+  <form method="post">
+    <input type="hidden" name="acceptGdpr" value="yes">
 
-        {{ govukButton({
+    {{ govukButton({
           text: "Continue"
         }) }}
-    </form>
+  </form>
 {% endblock %}

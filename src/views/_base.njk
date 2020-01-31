@@ -11,11 +11,10 @@
 
 {% block pageTitle %}NatureScot - Licensing - Traps Registration{% endblock %}
 
-{% block headIcons %}
-{% endblock %}
+{% block headIcons %}{% endblock %}
 
 {% block head %}
-    <link rel="stylesheet" href="{{pathPrefix}}/dist/main.css">
+  <link rel="stylesheet" href="{{pathPrefix}}/dist/main.css">
 {% endblock %}
 
 {% block skipLink %}
@@ -37,27 +36,25 @@
 {% set mainClasses = "app-main-class" %}
 
 <div class="govuk-width-container">
-{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
-{% block beforeContent %}
-  {{ govukPhaseBanner({
-    tag: {
-      text: "alpha"
-    },
-    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
-  }) }}
-  {% if backUrl %}
-    {{ govukBackLink({
-      text: "Back",
-      href: pathPrefix + '/' + backUrl
+  {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+  {% block beforeContent %}
+    {{ govukPhaseBanner({
+      tag: {
+        text: "alpha"
+      },
+      html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
     }) }}
-  {% endif %}
-{% endblock %}
+    {% if backUrl %}
+      {{ govukBackLink({
+        text: "Back",
+        href: pathPrefix + '/' + backUrl
+      }) }}
+    {% endif %}
+  {% endblock %}
 </div>
 
 <div class="govuk-width-container">
-{% block content %}
-
-{% endblock %}
+  {% block content %}{% endblock %}
 </div>
 
 {% block footer %}
@@ -87,7 +84,9 @@
 
 {% block bodyEnd %}
   <script src="{{pathPrefix}}/govuk-frontend/all.js"></script>
-  <script>window.GOVUKFrontend.initAll()</script>
+  <script>
+    window
+      .GOVUKFrontend
+      .initAll();
+  </script>
 {% endblock %}
-</body>
-</html>
