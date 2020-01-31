@@ -1,6 +1,6 @@
 {
   "name": "traps-registration",
-  "version": "0.0.0-alpha.0",
+  "version": "0.0.1",
   "description": "Register to use traps under General Licences",
   "author": "Mike Coats <mike.coats@nature.scot>",
   "repository": "github:Scottish-Natural-Heritage/traps-registration",
