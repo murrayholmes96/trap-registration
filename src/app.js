@@ -8,7 +8,7 @@ import memorystore from 'memorystore';
 
 import config from './config.js';
 import logger from './logger.js';
-import router from './router.js';
+// import router from './router.js';
 
 const MemoryStore = memorystore(session);
 const app = express();
@@ -43,11 +43,11 @@ app.use(
   express.static(path.join(__dirname, '..', '/node_modules/govuk-frontend/govuk'))
 );
 
-app.all(`${config.pathPrefix}/`, (req, res) => {
-  res.redirect(`${config.pathPrefix}/start`);
-});
+// app.all(`${config.pathPrefix}/`, (req, res) => {
+//   res.redirect(`${config.pathPrefix}/start`);
+// });
 
-app.use(router);
+// app.use(router);
 
 app.use((req, res) => {
   res.status(404).render('error-404.njk', {pathPrefix: config.pathPrefix});
