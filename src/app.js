@@ -6,8 +6,9 @@ import nunjucks from 'nunjucks';
 import session from 'express-session';
 import memorystore from 'memorystore';
 
+import config from './config.js';
 import logger from './logger.js';
-import router from './router.js';
+// import router from './router.js';
 
 const MemoryStore = memorystore(session);
 const app = express();
@@ -30,23 +31,26 @@ app.use(
     store: new MemoryStore({
       checkPeriod: 30 * 60 * 1000
     }),
-    secret: process.env.SESSION_SECRET,
+    secret: config.sessionSecret,
     resave: true,
     saveUninitialized: false
   })
 );
 
-app.use('/dist', express.static(path.join(__dirname, '..', '/dist')));
-app.use('/govuk-frontend', express.static(path.join(__dirname, '..', '/node_modules/govuk-frontend/govuk')));
+app.use(`${config.pathPrefix}/dist`, express.static(path.join(__dirname, '..', '/dist')));
+app.use(
+  `${config.pathPrefix}/govuk-frontend`,
+  express.static(path.join(__dirname, '..', '/node_modules/govuk-frontend/govuk'))
+);
 
-app.all('/', (req, res) => {
-  res.redirect('start');
-});
+// app.all(`${config.pathPrefix}/`, (req, res) => {
+//   res.redirect(`${config.pathPrefix}/start`);
+// });
 
-app.use(router);
+// app.use(router);
 
 app.use((req, res) => {
-  res.status(404).render('error-404.njk');
+  res.status(404).render('error-404.njk', {pathPrefix: config.pathPrefix});
 });
 
 export {app as default};

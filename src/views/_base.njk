@@ -7,15 +7,14 @@
 {% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
 {% from "naturescot/components/footer/macro.njk" import naturescotFooter %}
 
-{% set assetPath = "/govuk-frontend/assets" %}
+{% set assetPath = pathPrefix + "/govuk-frontend/assets" %}
 
 {% block pageTitle %}NatureScot - Licensing - Traps Registration{% endblock %}
 
-{% block headIcons %}
-{% endblock %}
+{% block headIcons %}{% endblock %}
 
 {% block head %}
-    <link rel="stylesheet" href="/dist/main.css">
+  <link rel="stylesheet" href="{{pathPrefix}}/dist/main.css">
 {% endblock %}
 
 {% block skipLink %}
@@ -27,37 +26,35 @@
 
 {% block header %}
   {{ naturescotHeader({
-    homepageUrl: "#",
+    homepageUrl: "https://www.nature.scot/professional-advice/safeguarding-protected-areas-and-species/licensing",
     containerClasses: "govuk-width-container",
     serviceName: "Trap Registration",
-    serviceUrl: "/"
+    serviceUrl: pathPrefix if pathPrefix.length > 0 else "/"
   }) }}
 {% endblock %}
 
 {% set mainClasses = "app-main-class" %}
 
 <div class="govuk-width-container">
-{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
-{% block beforeContent %}
-  {{ govukPhaseBanner({
-    tag: {
-      text: "alpha"
-    },
-    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
-  }) }}
-  {% if backUrl %}
-    {{ govukBackLink({
-      text: "Back",
-      href: backUrl
+  {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+  {% block beforeContent %}
+    {{ govukPhaseBanner({
+      tag: {
+        text: "alpha"
+      },
+      html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
     }) }}
-  {% endif %}
-{% endblock %}
+    {% if backUrl %}
+      {{ govukBackLink({
+        text: "Back",
+        href: pathPrefix + '/' + backUrl
+      }) }}
+    {% endif %}
+  {% endblock %}
 </div>
 
 <div class="govuk-width-container">
-{% block content %}
-
-{% endblock %}
+  {% block content %}{% endblock %}
 </div>
 
 {% block footer %}
@@ -86,8 +83,10 @@
 {% endblock %}
 
 {% block bodyEnd %}
-  <script src="/govuk-frontend/all.js"></script>
-  <script>window.GOVUKFrontend.initAll()</script>
+  <script src="{{pathPrefix}}/govuk-frontend/all.js"></script>
+  <script>
+    window
+      .GOVUKFrontend
+      .initAll();
+  </script>
 {% endblock %}
-</body>
-</html>

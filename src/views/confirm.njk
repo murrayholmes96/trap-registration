@@ -6,19 +6,19 @@
 {% from "govuk/components/button/macro.njk" import govukButton %}
 
 {% block head %}
-{{ super() }}
-<style>
-#crimeExplanations .govuk-accordion__controls {
-  display:none;
-}
-</style>
+  {{ super() }}
+  <style>
+    #crimeExplanations .govuk-accordion__controls {
+      display: none;
+    }
+  </style>
 {% endblock %}
 
 {% block content %}
   <form method="post">
     <h1 class="govuk-heading-xl">Check your answers before sending your registration</h1>
     <h2 class="govuk-heading-m">Registration details</h2>
-{{ govukSummaryList({
+    {{ govukSummaryList({
   rows: [
     {
       key: {
@@ -30,7 +30,7 @@
       actions: {
         items: [
           {
-            href: "/conviction#conviction",
+            href: pathPrefix + "/conviction#conviction",
             text: "Change",
             visuallyHiddenText: "convictions"
           }
@@ -47,7 +47,7 @@
       actions: {
         items: [
           {
-            href: "/general#general",
+            href: pathPrefix + "/general#general",
             text: "Change",
             visuallyHiddenText: "general licences"
           }
@@ -64,7 +64,7 @@
       actions: {
         items: [
           {
-            href: "/general#general",
+            href: pathPrefix + "/general#general",
             text: "Change",
             visuallyHiddenText: "general licences"
           }
@@ -81,7 +81,7 @@
       actions: {
         items: [
           {
-            href: "/general#general",
+            href: pathPrefix + "/general#general",
             text: "Change",
             visuallyHiddenText: "general licences"
           }
@@ -98,7 +98,7 @@
       actions: {
         items: [
           {
-            href: "/comply#comply",
+            href: pathPrefix + "/comply#comply",
             text: "Change",
             visuallyHiddenText: "agreement to comply with the terms"
           }
@@ -115,7 +115,7 @@
       actions: {
         items: [
           {
-            href: "/meat-bait#meatbait",
+            href: pathPrefix + "/meat-bait#meatbait",
             text: "Change",
             visuallyHiddenText: "intention to use meat baits in my traps"
           }
@@ -125,8 +125,8 @@
   ]
 })}}
 
-      <h2 class="govuk-heading-m">Personal details</h2>
-{{ govukSummaryList({
+    <h2 class="govuk-heading-m">Personal details</h2>
+    {{ govukSummaryList({
   rows: [
     {
       key: {
@@ -138,7 +138,7 @@
       actions: {
         items: [
           {
-            href: "/details#full-name",
+            href: pathPrefix + "/details#full-name",
             text: "Change",
             visuallyHiddenText: "name"
           }
@@ -155,7 +155,7 @@
       actions: {
         items: [
           {
-            href: "/details#address-line-1",
+            href: pathPrefix + "/details#address-line-1",
             text: "Change",
             visuallyHiddenText: "contact information"
           }
@@ -172,7 +172,7 @@
       actions: {
         items: [
           {
-            href: "/details#phone-number",
+            href: pathPrefix + "/details#phone-number",
             text: "Change",
             visuallyHiddenText: "contact details"
           }
