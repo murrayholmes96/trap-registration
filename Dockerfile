@@ -17,8 +17,8 @@ RUN apk add --no-cache --virtual .build-deps \
 WORKDIR /home/node
 USER node
 
-# copy in all the source code, sorting our the file ownership on-the-fly as we
-# might be building linux images from a windows host
+# copy in the package files so that we can install and build the project
+# dependencies
 COPY --chown=node:node package*.json ./
 
 # install all the node modules required
@@ -46,7 +46,7 @@ COPY --chown=node:node ./build ./build
 # these variables are for overriding but keep them consistent between image and
 # run
 ENV PORT 3000
-ENV PATH_PREFIX /traps
+ENV PATH_PREFIX /trap-registration
 
 # these variables are for overriding and they only matter during run
 ENV SESSION_SECRET override_this_value
