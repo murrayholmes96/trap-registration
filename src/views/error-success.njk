@@ -1,0 +1,27 @@
+{% extends "_base.njk" %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">Registration complete</h1>
+      <p class="govuk-body">The registration you are trying to access has been completed.</p>
+      <p class="govuk-body">
+        To find your Trap Registration Number please check your email. You will
+        have been sent an email containing your Trap Registration Number on
+        completion of this registration process.
+      </p>
+      <p class="govuk-body">
+        Contact the NatureScot Licensing Team if you need to speak to someone
+        about using traps under General Licences.
+      </p>
+      <p class="govuk-body">
+        Email:<br>
+        <strong class="govuk-!-font-weight-bold">
+          <a class="govuk-link" href="mailto:licensing@nature.scot">licensing@nature.scot</a>
+        </strong>
+      </p>
+    </div>
+  </div>
+{% endblock %}
