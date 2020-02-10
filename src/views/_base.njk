@@ -9,10 +9,22 @@
 
 {% set assetPath = pathPrefix + "/govuk-frontend/assets" %}
 
-{% block pageTitle %}NatureScot - Licensing - Traps Registration{% endblock %}
+{% block pageTitle %}NatureScot - Licensing - Trap Registration{% endblock %}
 
 {% block headIcons %}
   <link rel="shortcut icon" type="image/png" sizes="192x192" href="{{pathPrefix}}/dist/icon-192x192.png">
+  <link rel="apple-touch-icon" href="{{pathPrefix}}/dist/icon-192x192.png">
+
+  <meta property="og:site_name" content="NatureScot - Licensing">
+  <meta property="og:url" content="{{pathPrefix}}">
+  <link rel="canonical" href="{{pathPrefix}}" />
+  <meta property="og:title" content="NatureScot - Licensing - Trap Registration">
+  <meta name="description" content="Use this service to register using a Larsen trap, a Larsen mate trap, a Larsen pod trap, or a multi-catch cage trap under NatureScot's General Licences.">
+  <meta property="og:description" content="Use this service to register using a Larsen trap, a Larsen mate trap, a Larsen pod trap, or a multi-catch cage trap under NatureScot's General Licences.">
+  <meta property="og:image" content="{{pathPrefix}}/dist/naturescot-logo.png">
+  <meta name="twitter:image:alt" content="NatureScot Logo">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
 {% endblock %}
 
 {% block head %}
