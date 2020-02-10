@@ -25,11 +25,27 @@ nunjucks.configure(['src/views', 'node_modules/naturescot-frontend', 'node_modul
   express: app
 });
 
+/**
+ * WCAG2.1 - 2.2 Enough Time
+ * Provide users enough time to read and use content.
+ *
+ * Success Criterion 2.2.1 Timing Adjustable (Level A)
+ * For each time limit that is set by the content, at least one of the following
+ * is true:
+ * 20 Hour Exception: The time limit is longer than 20 hours.
+ *
+ * Success Criterion 2.2.6 Timeouts (Level AAA)
+ * Users are warned of the duration of any user inactivity that could cause data
+ * loss, unless the data is preserved for more than 20 hours when the user does
+ * not take any actions.
+ */
+const sessionDuration = 20.1 * 60 * 60 * 1000;
+
 app.use(
   session({
-    cookie: {maxAge: 30 * 60 * 1000},
+    cookie: {maxAge: sessionDuration},
     store: new MemoryStore({
-      checkPeriod: 30 * 60 * 1000
+      checkPeriod: sessionDuration
     }),
     secret: config.sessionSecret,
     resave: true,
