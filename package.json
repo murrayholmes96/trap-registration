@@ -7,7 +7,7 @@
   "license": "(MIT OR OGL-UK-3.0 OR Apache-2.0)",
   "type": "module",
   "scripts": {
-    "prescss": "node --experimental-modules src/env-scss.js",
+    "prescss": "node --experimental-modules src/pre-scss.js",
     "scss": "node-sass --importer node_modules/node-sass-package-importer/dist/cli.js -o dist build/main.scss",
     "lint": "xo",
     "assets": "cp node_modules/naturescot-frontend/naturescot/assets/images/naturescot-logo.png dist/ && cp -R src/assets/* dist/",
