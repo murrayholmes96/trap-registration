@@ -35,37 +35,37 @@
 
       <form method="post">
         {{ govukRadios({
-        classes: "govuk-radios--inline",
-        idPrefix: "meatbait",
-        name: "meatbait",
-        fieldset: {
+          classes: "govuk-radios--inline",
+          idPrefix: "meatbait",
+          name: "meatbait",
+          fieldset: {
             legend: {
                 text: "Do you intend to use meat baits in your traps?",
                 isPageHeading: true,
                 classes: "govuk-fieldset__legend--xl"
             }
-        },
-        errorMessage: {
+          },
+          errorMessage: {
             text: "You must select if you intend to use meat baits in your traps."
-        } if model.meatBaitError,
-        items: [
+          } if model.meatBaitError,
+          items: [
             {
-                value: "yes",
-                text: "Yes",
-                checked: model.meatBait === true
+              value: "yes",
+              text: "Yes",
+              checked: model.meatBait === true
             },
             {
-                value: "no",
-                text: "No",
-                checked: model.meatBait === false
+              value: "no",
+              text: "No",
+              checked: model.meatBait === false
             }
-        ]
-    }) }}
+          ]
+        }) }}
 
         {{ govukWarningText({
-      text: "Using meat baits is only permitted in Larsen mate and Larsen pod traps.",
-      iconFallbackText: "Warning"
-    }) }}
+          text: "You need to be registered to use meat baits in Larsen mate and Larsen pod traps.",
+          iconFallbackText: "Warning"
+        }) }}
 
         <p class="govuk-body">We will ask you every year what non-target species you have caught using this <a href="https://www.nature.scot/licence-return-form-meat-bait">return form</a>.</p>
         <p class="govuk-body">Please make sure you keep a record of:</p>
