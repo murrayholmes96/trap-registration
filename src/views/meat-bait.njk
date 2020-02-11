@@ -3,7 +3,7 @@
 {% block head %}
   {{ super() }}
   <style>
-    #trapExplanations .govuk-accordion__section-content img {
+    #meatBaitTrapExplanations .govuk-accordion__section-content img {
       width: 100%;
       height: auto;
       margin-bottom: 15px;
@@ -89,17 +89,25 @@
     </div>
     <div class="govuk-grid-column-one-third">
       {{ govukAccordion({
-      id: "trapExplanations",
+      id: "meatBaitTrapExplanations",
       items: [
         {
           heading: {
             text: "What is a Larsen mate trap?"
           },
           content: {
-            html: '<img src="http://gateway.snh.gov.uk/go/?id=23" alt="A Larsen mate trap">' +
+            html: '' +
+              '<img src="https://gateway.snh.gov.uk/go/?id=23" alt="A Larsen mate trap">' +
               '<p class="govuk-body-s">&copy; The Game &amp; Wildlife Conservation Trust</p>' +
-              '<p class="govuk-body">"Larsen mate trap" means a portable spring-operated cage-trap comprising two shell sections hinged along one edge connected by one or more springs and kept open by a split-rod/trip-perch (as manufactured by Elgeeco; or any trap which is equivalent to it in all relevant respects). When open (set) the minimum distance between any two corners of the trap must be 39 cm. The trap must not shut tightly along the majority of the length of the meeting edges.</p>'
-          },
+              '<p class="govuk-body">' +
+              '  "Larsen mate trap" means a portable spring-operated cage-trap comprising' +
+              '  two shell sections hinged along one edge connected by one or more springs' +
+              '  and kept open by a split-rod/trip-perch (as manufactured by Elgeeco; or any' +
+              '  trap which is equivalent to it in all relevant respects). When open (set)' +
+              '  the minimum distance between any two corners of the trap must be 39 cm. The' +
+              '  trap must not shut tightly along the majority of the length of the meeting' +
+              '  edges.' +
+              '</p>'          },
           expanded: false
         },
         {
@@ -107,9 +115,14 @@
             text: "What is a Larsen pod trap?"
           },
           content: {
-            html: '<img src="http://gateway.snh.gov.uk/go/?id=24" alt="A Larsen pod trap">' +
+            html: '' +
+              '<img src="https://gateway.snh.gov.uk/go/?id=24" alt="A Larsen pod trap">' +
               '<p class="govuk-body-s">&copy; The Game &amp; Wildlife Conservation Trust</p>' +
-              '<p class="govuk-body">"Larsen pod trap" means a portable spring or gravity operated cage-trap which has a single compartment with two side-mounted, spring activated trap-doors which can be set independently.</p>'
+              '<p class="govuk-body">' +
+              '  "Larsen pod trap" means a portable spring or gravity operated cage-trap' +
+              '  which has a single compartment with either one or two side or top-mounted,' +
+              '  spring activated trap-doors which can be set independently.' +
+              '</p>'
           },
           expanded: false
         }
