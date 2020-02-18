@@ -29,11 +29,7 @@
         }
       },
       hint: {
-        html: "Select all that apply. " +
-              'General Licence <a class="govuk-link" href="https://gateway.snh.gov.uk/go/?id=18">GL01</a>, ' +
-              '<a class="govuk-link" href="https://gateway.snh.gov.uk/go/?id=19">GL02</a> & ' +
-              '<a class="govuk-link" href="https://gateway.snh.gov.uk/go/?id=20">GL03</a> can be found here.'
-
+        html: "Select all that apply."
       },
       errorMessage : {
         text: "You must confirm which General Licence or Licences you intend to trap under."
@@ -56,6 +52,14 @@
         }
       ]
     }) }}
+
+    <p class="govuk-body">
+      General Licence
+      <a class="govuk-link" href="https://gateway.snh.gov.uk/go/?id=18">GL01</a>,
+      <a class="govuk-link" href="https://gateway.snh.gov.uk/go/?id=19">GL02</a> &
+      <a class="govuk-link" href="https://gateway.snh.gov.uk/go/?id=20">GL03</a>
+      can be found here.
+    </p>
 
     {{ govukButton({
       text: "Continue"
