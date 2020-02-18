@@ -10,7 +10,7 @@
       titleText: "There is a problem",
       errorList: [
         {
-          text: "You must confirm that you agree to comply with the terms of the General Licences.",
+          text: "You must confirm that you agree to comply with the terms and conditions of the General Licences.",
           href: "#comply-error"
         }
       ]
@@ -23,7 +23,7 @@
       name: "comply",
       fieldset: {
         legend: {
-          text: "Please confirm that you agree to comply with the terms of the General Licences",
+          text: "Please confirm that you agree to comply with the terms and conditions of the General Licences",
           isPageHeading: true,
           classes: "govuk-fieldset__legend--xl"
         }
@@ -32,19 +32,18 @@
         html:
           'General Licence <a class="govuk-link" href="https://gateway.snh.gov.uk/go/?id=18">GL01</a>, ' +
           '<a class="govuk-link" href="https://gateway.snh.gov.uk/go/?id=19">GL02</a> & ' +
-          '<a class="govuk-link" href="https://gateway.snh.gov.uk/go/?id=20">GL03</a> can be found here. ' +
-          'Please note it is your responsibility to ensure that you do not use General Licences on areas where ' +
+          '<a class="govuk-link" href="https://gateway.snh.gov.uk/go/?id=20">GL03</a>. ' +
+          'It is your responsibility to ensure that you do not use General Licences on areas where ' +
           'General Licences are currently restricted. ' +
-          '<a class="govuk-link" href="https://www.nature.scot/general-licences-birds-restrictions">More information ' +
-          'can be found here</a>. This information will be updated regularly.'
+          '<a class="govuk-link" href="https://www.nature.scot/general-licences-birds-restrictions">Find out more</a>.'
         },
       errorMessage: {
-        text: "You must confirm that you agree to comply with the terms of the General Licences."
+        text: "You must confirm that you agree to comply with the terms and conditions of the General Licences."
       } if model.complyError,
       items: [
         {
           value: "yes",
-          text: "I agree to comply with the terms of the General Licences",
+          text: "I agree to comply with the terms and conditions of the General Licences",
           checked: model.comply === 'yes'
         }
       ]
