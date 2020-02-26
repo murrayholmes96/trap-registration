@@ -99,8 +99,7 @@ router.use(
 
 router.use(
   Page({
-    path: 'success',
-    back: 'confirm'
+    path: 'success'
   })
 );
 

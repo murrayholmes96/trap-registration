@@ -13,6 +13,8 @@ import router from './router.js';
 const MemoryStore = memorystore(session);
 const app = express();
 
+app.disable('x-powered-by');
+
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 app.use(express.urlencoded({extended: true}));
@@ -41,9 +43,18 @@ nunjucks.configure(['src/views', 'node_modules/naturescot-frontend', 'node_modul
  */
 const sessionDuration = 20.1 * 60 * 60 * 1000;
 
+app.set('trust proxy', 1); // Trust first proxy
+
 app.use(
   session({
-    cookie: {maxAge: sessionDuration},
+    name: 'trap-registration-session',
+    cookie: {
+      sameSite: true,
+      maxAge: sessionDuration,
+      path: `${config.pathPrefix}/`,
+      httpOnly: true,
+      secure: 'auto'
+    },
     store: new MemoryStore({
       checkPeriod: sessionDuration
     }),
