@@ -50,7 +50,7 @@ ENV PATH_PREFIX /trap-registration
 
 # these variables are for overriding and they only matter during run
 ENV SESSION_SECRET override_this_value
-ENV NOTIFY_API_KEY override_this_value
+ENV TRAP_API_URL override_this_value
 
 # let docker know about our listening port
 EXPOSE $PORT
