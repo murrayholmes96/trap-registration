@@ -12,7 +12,8 @@ const config = Object.freeze({
   port: process.env.PORT,
   sessionSecret: process.env.SESSION_SECRET,
   apiEndpoint: process.env.TRAP_API_URL,
-  pathPrefix: process.env.PATH_PREFIX || ''
+  pathPrefix: process.env.PATH_PREFIX || '',
+  cookiePrefix: process.env.COOKIE_PREFIX || '__Secure'
 });
 
 export {config as default};

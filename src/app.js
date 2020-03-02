@@ -47,13 +47,17 @@ app.set('trust proxy', 1); // Trust first proxy
 
 app.use(
   session({
-    name: 'trap-registration-session',
+    // Using the __Secure- prefix to protect our cookies as per
+    // https://scotthelme.co.uk/tough-cookies/#__secure
+    name: `${config.cookiePrefix}-trap-registration-session`,
     cookie: {
       sameSite: true,
       maxAge: sessionDuration,
       path: `${config.pathPrefix}/`,
       httpOnly: true,
-      secure: 'auto'
+      // We're re-writing all cookies to be secure on the proxy, so between here
+      // and there it doesn't need to be.
+      secure: false
     },
     store: new MemoryStore({
       checkPeriod: sessionDuration
