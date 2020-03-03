@@ -1,15 +1,39 @@
 import {ReturnState} from './_base.js';
 
+/**
+ * Clean the incoming POST request body to make it more compatible with the
+ * database and its validation rules.
+ *
+ * @param {any} body the incoming request's body
+ * @returns {any} a json object that's just got our cleaned up fields on it
+ */
+const cleanInput = (body) => {
+  return {
+    // The strings are trimmed for leading and trailing whitespace and then
+    // copied across if they're in the POST body or are set to undefined if
+    // they're missing.
+    fullName: body.fullName === undefined ? undefined : body.fullName.trim(),
+    addressLine1: body.addressLine1 === undefined ? undefined : body.addressLine1.trim(),
+    addressLine2: body.addressLine2 === undefined ? undefined : body.addressLine2.trim(),
+    addressTown: body.addressTown === undefined ? undefined : body.addressTown.trim(),
+    addressCounty: body.addressCounty === undefined ? undefined : body.addressCounty.trim(),
+    addressPostcode: body.addressPostcode === undefined ? undefined : body.addressPostcode.trim(),
+    phoneNumber: body.phoneNumber === undefined ? undefined : body.phoneNumber.trim(),
+    emailAddress: body.emailAddress === undefined ? undefined : body.emailAddress.trim()
+  };
+};
+
 const detailsController = (req) => {
-  // Grab all of the values from the form post.
-  req.session.fullName = req.body.fullName;
-  req.session.addressLine1 = req.body.addressLine1;
-  req.session.addressLine2 = req.body.addressLine2;
-  req.session.addressTown = req.body.addressTown;
-  req.session.addressCounty = req.body.addressCounty;
-  req.session.addressPostcode = req.body.addressPostcode;
-  req.session.phoneNumber = req.body.phoneNumber;
-  req.session.emailAddress = req.body.emailAddress;
+  // Clean up the user's input before we store it in the session.
+  const cleanForm = cleanInput(req.body);
+  req.session.fullName = cleanForm.fullName;
+  req.session.addressLine1 = cleanForm.addressLine1;
+  req.session.addressLine2 = cleanForm.addressLine2;
+  req.session.addressTown = cleanForm.addressTown;
+  req.session.addressCounty = cleanForm.addressCounty;
+  req.session.addressPostcode = cleanForm.addressPostcode;
+  req.session.phoneNumber = cleanForm.phoneNumber;
+  req.session.emailAddress = cleanForm.emailAddress;
 
   // Clear the general error...
   req.session.detailsError = false;
@@ -59,6 +83,7 @@ const detailsController = (req) => {
   if (
     req.body.emailAddress === undefined ||
     req.body.emailAddress.trim() === '' ||
+    req.body.emailAddress.trim().includes(' ') ||
     !req.body.emailAddress.includes('@')
   ) {
     req.session.emailError = true;
