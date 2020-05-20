@@ -1,16 +1,5 @@
 {% extends "_base.njk" %}
 
-{% block head %}
-  {{ super() }}
-  <style>
-    #startTrapExplanations .govuk-accordion__section-content img {
-      width: 100%;
-      height: auto;
-      margin-bottom: 15px;
-    }
-  </style>
-{% endblock %}
-
 {% from "govuk/components/warning-text/macro.njk" import govukWarningText %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
 {% from "govuk/components/accordion/macro.njk" import govukAccordion %}
