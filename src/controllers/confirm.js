@@ -2,30 +2,30 @@ import axios from 'axios';
 import config from '../config.js';
 import {ReturnState} from './_base.js';
 
-const confirmController = async (req) => {
+const confirmController = async (request) => {
   try {
     const newRegResponse = await axios.post(config.apiEndpoint);
     const newReg = {
-      convictions: req.session.conviction,
-      usingGL01: req.session.general1,
-      usingGL02: req.session.general2,
-      usingGL03: req.session.general3,
-      complyWithTerms: req.session.comply === 'yes',
-      meatBaits: req.session.meatBait,
-      fullName: req.session.fullName,
-      addressLine1: req.session.addressLine1,
-      addressLine2: req.session.addressLine2,
-      addressTown: req.session.addressTown,
-      addressCounty: req.session.addressCounty,
-      addressPostcode: req.session.addressPostcode,
-      phoneNumber: req.session.phoneNumber,
-      emailAddress: req.session.emailAddress
+      convictions: request.session.conviction,
+      usingGL01: request.session.general1,
+      usingGL02: request.session.general2,
+      usingGL03: request.session.general3,
+      complyWithTerms: request.session.comply === 'yes',
+      meatBaits: request.session.meatBait,
+      fullName: request.session.fullName,
+      addressLine1: request.session.addressLine1,
+      addressLine2: request.session.addressLine2,
+      addressTown: request.session.addressTown,
+      addressCounty: request.session.addressCounty,
+      addressPostcode: request.session.addressPostcode,
+      phoneNumber: request.session.phoneNumber,
+      emailAddress: request.session.emailAddress
     };
     const newRegUrl = newRegResponse.headers.location;
     const updatedRegResponse = await axios.put(newRegUrl, newReg);
 
-    req.session.regNo = updatedRegResponse.data.regNo;
-    req.session.expiryDate = updatedRegResponse.data.expiryDate;
+    request.session.regNo = updatedRegResponse.data.regNo;
+    request.session.expiryDate = updatedRegResponse.data.expiryDate;
 
     // Let them know it all went well.
     return ReturnState.Positive;
