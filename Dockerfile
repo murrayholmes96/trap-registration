@@ -22,7 +22,7 @@ USER node
 COPY --chown=node:node package*.json ./
 
 # install all the node modules required
-RUN npm ci
+RUN npm ci && npm prune --production
 
 ################################################################################
 # Deployable Image
@@ -45,15 +45,15 @@ COPY --chown=node:node ./build ./build
 
 # these variables are for overriding but keep them consistent between image and
 # run
-ENV PORT 3000
-ENV PATH_PREFIX /trap-registration
+ENV TR_PORT 3000
+ENV TR_PATH_PREFIX trap-registration
 
 # these variables are for overriding and they only matter during run
-ENV SESSION_SECRET override_this_value
-ENV TRAP_API_URL override_this_value
+ENV TR_SESSION_SECRET override_this_value
+ENV TR_API_URL override_this_value
 
 # let docker know about our listening port
-EXPOSE $PORT
+EXPOSE $TR_PORT
 
 # run the default start script, which kicks off a few pre-start things too
 CMD ["npm", "start"]
