@@ -8,19 +8,17 @@ const generalController = (request) => {
     // Unset any saved value.
     request.session.general1 = false;
     request.session.general2 = false;
-    request.session.general3 = false;
     // Reload the page to highlight errors.
     return ReturnState.Error;
   }
 
   // The user submitted a single value
-  if (['general1', 'general2', 'general3'].includes(request.body.general)) {
+  if (['general1', 'general2'].includes(request.body.general)) {
     // This is not an error.
     request.session.generalError = false;
     // Unset any saved value.
     request.session.general1 = false;
     request.session.general2 = false;
-    request.session.general3 = false;
     // Check the submitted value.
     if (request.body.general === 'general1') {
       request.session.general1 = true;
@@ -28,10 +26,6 @@ const generalController = (request) => {
 
     if (request.body.general === 'general2') {
       request.session.general2 = true;
-    }
-
-    if (request.body.general === 'general3') {
-      request.session.general3 = true;
     }
 
     // Continue onwards.
@@ -43,7 +37,6 @@ const generalController = (request) => {
     // Unset any saved value.
     request.session.general1 = false;
     request.session.general2 = false;
-    request.session.general3 = false;
     // Check for each of the submitted values.
     if (request.body.general.includes('general1')) {
       request.session.general1 = true;
@@ -53,12 +46,8 @@ const generalController = (request) => {
       request.session.general2 = true;
     }
 
-    if (request.body.general.includes('general3')) {
-      request.session.general3 = true;
-    }
-
     // Make sure the user's made at least one selection.
-    const atLeastOne = request.session.general1 || request.session.general2 || request.session.general3;
+    const atLeastOne = request.session.general1 || request.session.general2;
     if (atLeastOne) {
       // This is not an error.
       request.session.generalError = false;
@@ -72,7 +61,6 @@ const generalController = (request) => {
     // Unset any saved value.
     request.session.general1 = false;
     request.session.general2 = false;
-    request.session.general3 = false;
     // Reload the page to highlight errors.
     return ReturnState.Error;
   }
@@ -83,7 +71,6 @@ const generalController = (request) => {
   // Unset any saved value.
   request.session.general1 = false;
   request.session.general2 = false;
-  request.session.general3 = false;
   // Reload the page to highlight errors.
   return ReturnState.Error;
 };
