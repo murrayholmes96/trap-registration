@@ -8,9 +8,7 @@
   "type": "module",
   "scripts": {
     "lint": "xo",
-    "prescss": "mkdir -p dist/",
     "scss": "node --experimental-modules src/scss.js",
-    "preassetts": "mkdir -p dist/",
     "assets": "cp node_modules/naturescot-frontend/naturescot/assets/images/naturescot-logo.png dist/ && cp -R src/assets/* dist/",
     "postassets": "node --experimental-modules src/post-assets.js",
     "build": "npm run scss && npm run assets",
