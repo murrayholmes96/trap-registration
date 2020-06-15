@@ -41,7 +41,7 @@ COPY --chown=node:node --from=builder /home/node/node_modules ./node_modules
 # copy the code from the project
 COPY --chown=node:node package*.json ./
 COPY --chown=node:node ./src ./src
-COPY --chown=node:node ./build ./build
+COPY --chown=node:node ./dist ./dist
 
 # these variables are for overriding but keep them consistent between image and
 # run
