@@ -1,16 +1,5 @@
 {% extends "_base.njk" %}
 
-{% block head %}
-  {{ super() }}
-  <style>
-    #startTrapExplanations .govuk-accordion__section-content img {
-      width: 100%;
-      height: auto;
-      margin-bottom: 15px;
-    }
-  </style>
-{% endblock %}
-
 {% from "govuk/components/warning-text/macro.njk" import govukWarningText %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
 {% from "govuk/components/accordion/macro.njk" import govukAccordion %}
@@ -35,9 +24,6 @@
         </li>
         <li>
           <a class="govuk-link" href="https://gateway.snh.gov.uk/go/?id=19">GL02 - To kill or take certain birds for the prevention of serious damage</a>
-        </li>
-        <li>
-          <a class="govuk-link" href="https://gateway.snh.gov.uk/go/?id=20">GL03 - To kill or take certain birds for the preservation of public health, public safety and preventing the spread of disease</a>
         </li>
       </ul>
 

@@ -5,15 +5,6 @@
 {% from "govuk/components/accordion/macro.njk" import govukAccordion %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
 
-{% block head %}
-  {{ super() }}
-  <style>
-    #crimeExplanations .govuk-accordion__controls {
-      display: none;
-    }
-  </style>
-{% endblock %}
-
 {% block content %}
   <form method="post">
     <h1 class="govuk-heading-xl">Check your answers before sending your registration</h1>
@@ -60,23 +51,6 @@
       },
       value: {
         text: 'I intend to trap under "GL02 - To kill or take certain birds for the prevention of serious damage".' if model.general2 else 'I do not intend to trap under "GL02 - To kill or take certain birds for the prevention of serious damage".'
-      },
-      actions: {
-        items: [
-          {
-            href: pathPrefix + "/general#general",
-            text: "Change",
-            visuallyHiddenText: "general licences"
-          }
-        ]
-      }
-    },
-    {
-      key: {
-        text: "General Licence 3"
-      },
-      value: {
-        text: 'I intend to trap under "GL03 - To kill or take certain birds for the preservation of public health, public safety and preventing the spread of disease".' if model.general3 else 'I do not intend to trap under "GL03 - To kill or take certain birds for the preservation of public health, public safety and preventing the spread of disease".'
       },
       actions: {
         items: [

@@ -23,112 +23,112 @@ const cleanInput = (body) => {
   };
 };
 
-const detailsController = (req) => {
+const detailsController = (request) => {
   // Clean up the user's input before we store it in the session.
-  const cleanForm = cleanInput(req.body);
-  req.session.fullName = cleanForm.fullName;
-  req.session.addressLine1 = cleanForm.addressLine1;
-  req.session.addressLine2 = cleanForm.addressLine2;
-  req.session.addressTown = cleanForm.addressTown;
-  req.session.addressCounty = cleanForm.addressCounty;
-  req.session.addressPostcode = cleanForm.addressPostcode;
-  req.session.phoneNumber = cleanForm.phoneNumber;
-  req.session.emailAddress = cleanForm.emailAddress;
+  const cleanForm = cleanInput(request.body);
+  request.session.fullName = cleanForm.fullName;
+  request.session.addressLine1 = cleanForm.addressLine1;
+  request.session.addressLine2 = cleanForm.addressLine2;
+  request.session.addressTown = cleanForm.addressTown;
+  request.session.addressCounty = cleanForm.addressCounty;
+  request.session.addressPostcode = cleanForm.addressPostcode;
+  request.session.phoneNumber = cleanForm.phoneNumber;
+  request.session.emailAddress = cleanForm.emailAddress;
 
   // Clear the general error...
-  req.session.detailsError = false;
+  request.session.detailsError = false;
   // ...and the specific errors.
-  req.session.nameError = false;
-  req.session.addressError = false;
-  req.session.townError = false;
-  req.session.postcodeError = false;
-  req.session.phoneError = false;
-  req.session.emailError = false;
+  request.session.nameError = false;
+  request.session.addressError = false;
+  request.session.townError = false;
+  request.session.postcodeError = false;
+  request.session.phoneError = false;
+  request.session.emailError = false;
 
   // Check if each of the fields is invalid.
-  if (req.body.fullName === undefined || req.body.fullName.trim() === '') {
-    req.session.nameError = true;
+  if (request.body.fullName === undefined || request.body.fullName.trim() === '') {
+    request.session.nameError = true;
   }
 
-  if (req.body.addressLine1 === undefined || req.body.addressLine1.trim() === '') {
-    req.session.addressError = true;
+  if (request.body.addressLine1 === undefined || request.body.addressLine1.trim() === '') {
+    request.session.addressError = true;
   }
 
-  if (req.body.addressTown === undefined || req.body.addressTown.trim() === '') {
-    req.session.townError = true;
+  if (request.body.addressTown === undefined || request.body.addressTown.trim() === '') {
+    request.session.townError = true;
   }
 
   // The shortest UK postcode is 'N19GU'.
   // The longest should be something like 'IV30 6GR', but we're not going to
   // check for too much data at this time.
   if (
-    req.body.addressPostcode === undefined ||
-    req.body.addressPostcode.trim() === '' ||
-    req.body.addressPostcode.trim().length < 5
+    request.body.addressPostcode === undefined ||
+    request.body.addressPostcode.trim() === '' ||
+    request.body.addressPostcode.trim().length < 5
   ) {
-    req.session.postcodeError = true;
+    request.session.postcodeError = true;
   }
 
   // The smallest, non-local, non-shortcode UK phone number is '08001111'.
   // The longest could be something like 	'+44 (01234) 567 890', but we're not
   // going to check for too much data at this time.
   if (
-    req.body.phoneNumber === undefined ||
-    req.body.phoneNumber.trim() === '' ||
-    req.body.phoneNumber.trim().length < 8
+    request.body.phoneNumber === undefined ||
+    request.body.phoneNumber.trim() === '' ||
+    request.body.phoneNumber.trim().length < 8
   ) {
-    req.session.phoneError = true;
+    request.session.phoneError = true;
   }
 
   if (
-    req.body.emailAddress === undefined ||
-    req.body.emailAddress.trim() === '' ||
-    req.body.emailAddress.trim().includes(' ') ||
-    !req.body.emailAddress.includes('@')
+    request.body.emailAddress === undefined ||
+    request.body.emailAddress.trim() === '' ||
+    request.body.emailAddress.trim().includes(' ') ||
+    !request.body.emailAddress.includes('@')
   ) {
-    req.session.emailError = true;
+    request.session.emailError = true;
   }
 
   // Check that any of the fields are invalid.
-  req.session.detailsError =
-    req.session.nameError ||
-    req.session.addressError ||
-    req.session.townError ||
-    req.session.postcodeError ||
-    req.session.phoneError ||
-    req.session.emailError;
+  request.session.detailsError =
+    request.session.nameError ||
+    request.session.addressError ||
+    request.session.townError ||
+    request.session.postcodeError ||
+    request.session.phoneError ||
+    request.session.emailError;
 
   // If we've seen an error in any of the fields, our visitor needs to go back
   // and fix them.
-  if (req.session.detailsError) {
+  if (request.session.detailsError) {
     return ReturnState.Error;
   }
 
   // Build the address array, ignoring any blank fields.
   const address = [];
-  if (req.session.addressLine1 !== undefined && req.session.addressLine1.trim() !== '') {
-    address.push(req.session.addressLine1);
+  if (request.session.addressLine1 !== undefined && request.session.addressLine1.trim() !== '') {
+    address.push(request.session.addressLine1);
   }
 
-  if (req.session.addressLine2 !== undefined && req.session.addressLine2.trim() !== '') {
-    address.push(req.session.addressLine2);
+  if (request.session.addressLine2 !== undefined && request.session.addressLine2.trim() !== '') {
+    address.push(request.session.addressLine2);
   }
 
-  if (req.session.addressTown !== undefined && req.session.addressTown.trim() !== '') {
-    address.push(req.session.addressTown);
+  if (request.session.addressTown !== undefined && request.session.addressTown.trim() !== '') {
+    address.push(request.session.addressTown);
   }
 
-  if (req.session.addressCounty !== undefined && req.session.addressCounty.trim() !== '') {
-    address.push(req.session.addressCounty);
+  if (request.session.addressCounty !== undefined && request.session.addressCounty.trim() !== '') {
+    address.push(request.session.addressCounty);
   }
 
-  if (req.session.addressPostcode !== undefined && req.session.addressPostcode.trim() !== '') {
-    address.push(req.session.addressPostcode);
+  if (request.session.addressPostcode !== undefined && request.session.addressPostcode.trim() !== '') {
+    address.push(request.session.addressPostcode);
   }
 
   // Create the display versions of the visitors address and contact info.
-  req.session.displayAddress = address.join('<br>');
-  req.session.displayContact = `${req.session.phoneNumber}<br>${req.session.emailAddress}`;
+  request.session.displayAddress = address.join('<br>');
+  request.session.displayContact = `${request.session.phoneNumber}<br>${request.session.emailAddress}`;
 
   // The request passed all our validation, we've stored copies of everything we
   // need, so it's time to go on.

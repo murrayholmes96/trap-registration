@@ -1,4 +1,4 @@
-{% extends "govuk/template.njk" %}
+{% extends "naturescot/template.njk" %}
 
 {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
 {% from "govuk/components/skip-link/macro.njk" import govukSkipLink %}
@@ -29,15 +29,6 @@
 
 {% block head %}
   <link rel="stylesheet" href="{{pathPrefix}}/dist/main.css">
-  {% if (not model) or (model and (not model.seenCookie)) %}
-    <style>
-      .cookie-bar {
-        display: block;
-        width: 100%;
-        padding-top:20px;
-      }
-    </style>
-  {% endif %}
 {% endblock %}
 
 {% block skipLink %}
@@ -49,13 +40,16 @@
 
 {% block header %}
   {% if (not model) or (model and (not model.seenCookie)) %}
-    <div class="cookie-bar govuk-width-container">
-      <p class="govuk-body">
-        NatureScot uses essential session cookies to remember your progress through registration.
-        <a href="https://www.nature.scot/cookie-policy" class="govuk-link">
-          Find out more.
-        </a>
-      </p>
+    <div class="naturescot-cookie-bar">
+      <div class="govuk-width-container">
+        <p class="govuk-body">
+          NatureScot uses essential session cookies to remember your progress
+          through this application.
+          <a class="govuk-link" href="https://www.nature.scot/cookie-policy">
+            Find out more.
+          </a>
+        </p>
+      </div>
     </div>
   {% endif %}
 
@@ -117,9 +111,5 @@
 
 {% block bodyEnd %}
   <script src="{{pathPrefix}}/govuk-frontend/all.js"></script>
-  <script>
-    window
-      .GOVUKFrontend
-      .initAll();
-  </script>
+  <script src="{{pathPrefix}}/dist/init.js"></script>
 {% endblock %}
