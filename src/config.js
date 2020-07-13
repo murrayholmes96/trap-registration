@@ -9,6 +9,7 @@ const config = Object.freeze({
   port: process.env.TR_PORT,
   sessionSecret: process.env.TR_SESSION_SECRET,
   apiEndpoint: process.env.TR_API_URL,
+  hostPrefix: process.env.TR_HOST_PREFIX ? `${process.env.TR_HOST_PREFIX}` : `http://localhost:${process.env.TR_PORT}`,
   pathPrefix: process.env.TR_PATH_PREFIX ? `/${process.env.TR_PATH_PREFIX}` : '/trap-registration',
   cookiePrefix: process.env.COOKIE_PREFIX || '__Secure'
 });
