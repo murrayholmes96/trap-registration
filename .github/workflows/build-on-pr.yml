@@ -20,4 +20,4 @@ jobs:
       run: npm run prestart
 
     - name: Build the Docker Image
-      run: docker build --tag mikecoats/actions-test:${GITHUB_SHA} .
+      run: docker build --tag naturescot/trap-registration:${GITHUB_SHA} .
