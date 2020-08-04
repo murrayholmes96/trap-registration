@@ -4,6 +4,12 @@ on:
   pull_request:
     branches: [ main, develop ]
 
+env:
+  TR_PORT: 3000
+  TR_PATH_PREFIX: trap-registration
+  TR_SESSION_SECRET: override_this_value
+  TR_API_URL: override_this_value
+
 jobs:
 
   build:
@@ -20,4 +26,4 @@ jobs:
       run: npm run prestart
 
     - name: Build the Docker Image
-      run: docker build --tag mikecoats/actions-test:${GITHUB_SHA} .
+      run: docker build --tag naturescot/trap-registration:${GITHUB_SHA} .
