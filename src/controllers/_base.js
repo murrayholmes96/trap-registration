@@ -72,6 +72,7 @@ const renderPage = (request, response, options) => {
   if (guardAllows(request.session, options)) {
     saveVisitedPage(request.session, options.path);
     response.render(`${options.path}.njk`, {
+      hostPrefix: config.hostPrefix,
       pathPrefix: config.pathPrefix,
       backUrl: options.back,
       model: request.session
@@ -83,11 +84,11 @@ const renderPage = (request, response, options) => {
   // user may have bookmarked this page, thinking they could see their
   // registration code again. Give them an error page that says otherwise.
   if (options.path === 'success') {
-    response.status(403).render('error-success.njk', {pathPrefix: config.pathPrefix});
+    response.status(403).render('error-success.njk', {hostPrefix: config.hostPrefix, pathPrefix: config.pathPrefix});
     return;
   }
 
-  response.status(403).render('error.njk', {pathPrefix: config.pathPrefix});
+  response.status(403).render('error.njk', {hostPrefix: config.hostPrefix, pathPrefix: config.pathPrefix});
 };
 
 /**
@@ -134,7 +135,7 @@ const Page = (options) => {
       }
     } catch (error) {
       console.log(error);
-      response.status(500).render('error.njk', {pathPrefix: config.pathPrefix});
+      response.status(500).render('error.njk', {hostPrefix: config.hostPrefix, pathPrefix: config.pathPrefix});
     }
   });
 
