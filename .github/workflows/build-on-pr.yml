@@ -2,12 +2,6 @@ name: Build on PRs
 
 on:
   pull_request:
-    branches: [ main, develop ]
-
-env:
-  TR_PORT: 3000
-  TR_SESSION_SECRET: override_this_value
-  TR_API_URL: override_this_value
 
 jobs:
 

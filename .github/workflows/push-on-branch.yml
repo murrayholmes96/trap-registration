@@ -1,4 +1,4 @@
-name: Build on PRs
+name: Build on Pushes to Branches
 
 on:
   push:
@@ -7,8 +7,6 @@ on:
 env:
   TR_PORT: 3000
   TR_PATH_PREFIX: trap-registration
-  TR_SESSION_SECRET: override_this_value
-  TR_API_URL: override_this_value
 
 jobs:
 
