@@ -52,6 +52,10 @@ ENV TR_PATH_PREFIX trap-registration
 ENV TR_SESSION_SECRET override_this_value
 ENV TR_API_URL override_this_value
 
+# this variable is required to ensure our cookies are kept secure
+# https://scotthelme.co.uk/tough-cookies/#__secure
+ENV COOKIE_PREFIX __Secure-
+
 # let docker know about our listening port
 EXPOSE $TR_PORT
 
