@@ -8,7 +8,7 @@ describe('GDPR page directly', function () {
 describe('GDPR page ', function () {
   beforeEach(() => {
     cy.visit('/start');
-    cy.get('#main-content form button.govuk-button').click();
+    cy.get('#main-content form button.naturescot-forward-button').click();
   });
 
   it('should allow access if the user visits all the pages in order', function () {
@@ -18,7 +18,7 @@ describe('GDPR page ', function () {
 
   it('main button should navigate to conviction', function () {
     cy.visit('/gdpr');
-    cy.get('#main-content form button.govuk-button').click();
+    cy.get('#main-content form button.naturescot-forward-button').click();
     cy.url().should('include', '/conviction');
   });
 });

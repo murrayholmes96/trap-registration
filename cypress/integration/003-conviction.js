@@ -11,11 +11,11 @@ describe('Conviction page ', function () {
     cy.visit('/start');
 
     // POST `/start`
-    cy.get('#main-content form button.govuk-button').click();
+    cy.get('#main-content form button.naturescot-forward-button').click();
 
     // ~GET `/gdpr`~
     // POST `/gdpr`
-    cy.get('#main-content form button.govuk-button').click();
+    cy.get('#main-content form button.naturescot-forward-button').click();
   });
 
   it('should allow access if the user visits all the pages in order', function () {
@@ -26,7 +26,7 @@ describe('Conviction page ', function () {
   it('"no" radio + main button should navigate to eligible', function () {
     cy.visit('/conviction');
     cy.get('#main-content form input[type="radio"][value="no"]').click();
-    cy.get('#main-content form button.govuk-button').click();
+    cy.get('#main-content form button.naturescot-forward-button').click();
     cy.url().should('include', '/eligible');
     cy.url().should('not.include', '/conviction-stop');
   });
@@ -34,7 +34,7 @@ describe('Conviction page ', function () {
   it('"yes" radio + main button should navigate to conviction-stop', function () {
     cy.visit('/conviction');
     cy.get('#main-content form input[type="radio"][value="yes"]').click();
-    cy.get('#main-content form button.govuk-button').click();
+    cy.get('#main-content form button.naturescot-forward-button').click();
     cy.url().should('include', '/conviction-stop');
     cy.url().should('not.include', '/eligible');
   });
