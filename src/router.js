@@ -110,4 +110,10 @@ router.use(
   })
 );
 
+router.use(
+  Page({
+    path: 'accessibility'
+  })
+);
+
 export {router as default};
