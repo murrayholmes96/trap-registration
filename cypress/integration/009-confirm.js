@@ -55,12 +55,10 @@ describe('Confirm page ', function () {
     cy.get('input[type="text"]#email-address').type('licensing@nature.scot', {delay: 1});
     // POST `/details`
     cy.get('#main-content form button.naturescot-forward-button').click();
-
   });
 
   it('should allow access if the user visits all the pages in order', function () {
     cy.visit('/confirm');
     cy.get('h1').should('contain', 'answers before sending');
   });
-
 });

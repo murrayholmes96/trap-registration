@@ -40,6 +40,7 @@
   "devDependencies": {
     "babel-eslint": "^10.1.0",
     "cypress": "^5.0.0",
+    "eslint-plugin-cypress": "^2.11.2",
     "nodemon": "^2.0.4",
     "prettier": "^2.0.5",
     "start-server-and-test": "^1.11.0",
@@ -48,6 +49,9 @@
   "xo": {
     "space": 2,
     "prettier": true,
+    "plugins": [
+      "cypress"
+    ],
     "parser": "babel-eslint",
     "rules": {
       "import/extensions": 0,
@@ -55,7 +59,8 @@
     },
     "env": [
       "browser",
-      "node"
+      "node",
+      "cypress/globals"
     ]
   },
   "prettier": {
