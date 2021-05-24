@@ -1,27 +1,38 @@
-name: Build on Pushes to Branches
+name: On-commit build of image
 
 on:
-  push:
+  pull_request:
     branches: [ main, develop ]
 
 env:
-  TR_PORT: 3000
-  TR_PATH_PREFIX: trap-registration
+  ECR_REPOSITORY: naturescot/trap-registration
 
 jobs:
 
-  build:
-    name: Build the Image
+  build_and_push:
+    name: Build and Push the Image
     runs-on: ubuntu-latest
+
     steps:
 
     - uses: actions/checkout@v2
 
-    - name: Install all the pre-requisites
-      run: npm ci && npm prune --production
+    - uses: actions/setup-node@v2
+      with:
+        node-version: '12'
 
-    - name: Check the pre-start operations
-      run: npm run prestart
+
+    - name: Install all the pre-requisites
+      run: |
+        npm ci && npm prune --production
+
+    - name: Check the linter
+      run: |
+        npm run lint
+
+    - name: Check the integration tests
+      run: |
+        npm run test
 
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v1
@@ -37,14 +48,14 @@ jobs:
     - name: Build and tag the Docker Image
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-        ECR_REPOSITORY: naturescot/trap-registration
-      run: docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:${GITHUB_REF##*/} .
+      run: |
+        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:prerelease
 
     - name: Push the Docker Image to Amazon ECR
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-        ECR_REPOSITORY: naturescot/trap-registration
-      run: docker push $ECR_REGISTRY/$ECR_REPOSITORY:${GITHUB_REF##*/}
+      run: |
+        docker push $ECR_REGISTRY/$ECR_REPOSITORY:prerelease
 
     - name: Logout of Amazon ECR
       if: always()
