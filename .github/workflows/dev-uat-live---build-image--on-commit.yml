@@ -21,10 +21,9 @@ jobs:
       with:
         node-version: '12'
 
-
     - name: Install all the pre-requisites
       run: |
-        npm ci && npm prune --production
+        npm ci
 
     - name: Check the linter
       run: |
@@ -33,6 +32,10 @@ jobs:
     - name: Check the integration tests
       run: |
         npm run test
+
+    - name: Remove all the dev-only pre-requisites
+      run: |
+        npm prune --production
 
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v1
